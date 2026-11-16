@@ -1,0 +1,363 @@
+---
+// Contact — Form No. QH/08, the instruction sheet. CTA + real office
+// details + the honest mailto-composing form. Copy verbatim from the
+// contact page. Nothing is sent from this website: the button composes
+// an email in the user's mail app (motion.ts wires it).
+import Stamp from './Stamp.astro';
+---
+<section class="section section--deck" id="contact">
+  <div class="container">
+    <div class="form-head mono" data-reveal>
+      <span>Form No. QH/08 · Instruction sheet</span>
+      <span class="form-head-right">Enquiries concerning consignments</span>
+    </div>
+
+    <header class="contact-head">
+      <h2 class="display-2" data-reveal>
+        Tell us the product, specification and destination.
+      </h2>
+      <p class="lead" data-reveal>
+        Send your requirement and our team will respond with what we can
+        verify and supply.
+      </p>
+      <div class="contact-actions" data-reveal>
+        <a class="btn btn--bronze" href="#enquiry">Start a product enquiry</a>
+        <a class="text-link" href="mailto:sales@qualityhouse.sd">Email sales</a>
+      </div>
+    </header>
+
+    <div class="details">
+      <div class="detail-col" data-reveal>
+        <span class="label">General enquiries</span>
+        <a class="detail-line mono" href="mailto:info@qualityhouse.sd">info@qualityhouse.sd</a>
+        <span class="label dt">Sales</span>
+        <a class="detail-line mono" href="mailto:sales@qualityhouse.sd">sales@qualityhouse.sd</a>
+      </div>
+      <div class="detail-col" data-reveal>
+        <span class="label">Telephone, Sudan office</span>
+        <a class="detail-line mono" href="tel:+249183286001">+249 183 286001</a>
+        <a class="detail-line mono" href="tel:+249183286008">+249 183 286008</a>
+        <span class="label dt">Telephone, Egypt office</span>
+        <a class="detail-line mono" href="tel:+20233370504">+20 233370504</a>
+      </div>
+      <div class="detail-col" data-reveal>
+        <span class="label">Sudan office</span>
+        <p class="detail-line">Hai Alshati, Block 11, Burri, Khartoum, Sudan</p>
+        <span class="label dt">Egypt office</span>
+        <p class="detail-line">68 Mossadag, Al Dokki, Giza, Cairo, Egypt</p>
+      </div>
+    </div>
+
+    <div class="enquiry form-sheet" id="enquiry">
+      <div class="contact-stamp" data-stamp>
+        <Stamp size="5rem" />
+      </div>
+      <div class="enquiry-grid">
+        <div class="enquiry-copy">
+          <h3 class="display-3" data-reveal>Product enquiry</h3>
+          <p class="lead" data-reveal>
+            Tell us the product, specification and destination market, and
+            our team will respond with what we can verify and supply.
+          </p>
+          <aside class="next-steps" data-reveal>
+            <span class="label">What happens next</span>
+            <p>
+              We review the product, specification and destination. We
+              respond with what we can verify and supply.
+            </p>
+            <p>
+              For a direct conversation, use the office contact details
+              above or write to
+              <a class="text-link" href="mailto:sales@qualityhouse.sd">sales@qualityhouse.sd</a>.
+            </p>
+          </aside>
+        </div>
+
+        <form class="enquiry-form" data-enquiry novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Full name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="f-company">Company</label>
+              <input id="f-company" name="company" type="text" autocomplete="organization" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="f-country">Country</label>
+              <input id="f-country" name="country" type="text" autocomplete="country-name" />
+            </div>
+            <div class="field">
+              <label for="f-email">Business email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="f-phone">Telephone</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="f-product">Product or service of interest</label>
+              <select id="f-product" name="product">
+                <option value="">Select a product</option>
+                <option>Gum arabic</option>
+                <option>Cotton</option>
+                <option>Seeds</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-quantity">Estimated quantity</label>
+            <input id="f-quantity" name="quantity" type="text" />
+          </div>
+
+          <div class="field">
+            <label for="f-message">Message</label>
+            <textarea id="f-message" name="message" rows="5"></textarea>
+          </div>
+
+          <p class="form-note mono">
+            This form prepares an email in your mail app. Nothing is sent
+            from this website. If your mail app does not open, write to
+            <a href="mailto:sales@qualityhouse.sd">sales@qualityhouse.sd</a>
+            directly.
+          </p>
+
+          <button class="btn btn--bronze" type="submit">Prepare email</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mono {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--qh-s4);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-block-end: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s12);
+  }
+
+  .contact-head {
+    position: relative;
+    max-inline-size: var(--qh-measure);
+    display: grid;
+    gap: var(--qh-s6);
+  }
+
+  .contact-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--qh-s8);
+    flex-wrap: wrap;
+    margin-block-start: var(--qh-s2);
+  }
+
+  .contact-stamp {
+    position: absolute;
+    inset-block-start: -1.75rem;
+    inset-inline-end: 1.75rem;
+  }
+
+  /* --- Details ----------------------------------------------------------------- */
+  .details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--qh-gap);
+    margin-block: var(--qh-s20);
+    padding-block: var(--qh-s10);
+    border-block: 1px solid var(--qh-line-strong);
+    border-block-start: 1px solid var(--qh-line-strong);
+  }
+
+  .detail-col {
+    display: grid;
+    gap: var(--qh-s2);
+    align-content: start;
+  }
+
+  .detail-col .label {
+    color: var(--qh-ink-mute);
+    margin-block-start: var(--qh-s4);
+  }
+
+  .detail-col .label:first-child {
+    margin-block-start: 0;
+  }
+
+  .detail-line,
+  .detail-col p {
+    color: var(--qh-ink);
+    text-decoration: none;
+    font-size: var(--qh-text);
+    line-height: 1.45;
+  }
+
+  a.detail-line {
+    width: fit-content;
+    border-block-end: 1px solid var(--qh-line);
+    transition:
+      color var(--qh-dur-fast) var(--qh-ease-press),
+      border-color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  a.detail-line:hover {
+    color: var(--qh-bronze-deep);
+    border-color: var(--qh-bronze-deep);
+  }
+
+  /* --- The instruction sheet -------------------------------------------------------- */
+  .enquiry {
+    padding: clamp(1.5rem, 3.5vw, 3rem);
+    position: relative; /* the QH/08 seal presses onto the sheet's corner */
+  }
+
+  .enquiry-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: calc(var(--qh-s12) + var(--qh-s4));
+    align-items: start;
+  }
+
+  .enquiry-copy {
+    display: grid;
+    gap: var(--qh-s8);
+    align-content: start;
+  }
+
+  .next-steps {
+    display: grid;
+    gap: var(--qh-s3);
+    border-inline-start: 3px solid var(--qh-bronze);
+    padding-inline-start: var(--qh-s5);
+  }
+
+  .next-steps p {
+    color: var(--qh-ink-2);
+    max-inline-size: 40ch;
+    text-wrap: pretty;
+  }
+
+  .next-steps .text-link {
+    white-space: normal;
+  }
+
+  /* --- Form fields (dossier anatomy: field = label + ruled input) ---------------- */
+  .enquiry-form {
+    display: grid;
+    gap: var(--qh-s6);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--qh-s6);
+  }
+
+  .field {
+    display: grid;
+    gap: var(--qh-s1);
+  }
+
+  .field label {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-weight: 500;
+    letter-spacing: var(--qh-track-label);
+    text-transform: uppercase;
+    color: var(--qh-ink-mute);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    inline-size: 100%;
+    font-family: var(--qh-font-body);
+    font-size: var(--qh-text);
+    color: var(--qh-ink);
+    background: var(--qh-surface);
+    border: 1px solid var(--qh-line-control);
+    border-radius: var(--qh-r-control);
+    padding: var(--qh-s3) var(--qh-s3);
+    transition: border-color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .field input:hover,
+  .field select:hover,
+  .field textarea:hover {
+    border-color: var(--qh-ink);
+  }
+
+  .field input:required,
+  .field select:required {
+    box-shadow: none;
+  }
+
+  .field input:required + *,
+  .field input[aria-invalid='true'] {
+    border-color: var(--qh-error);
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: var(--qh-ink-mute);
+  }
+
+  .field textarea {
+    resize: vertical;
+    min-block-size: 7.5rem;
+  }
+
+  .form-note {
+    color: var(--qh-ink-mute);
+  }
+
+  .form-note a {
+    color: var(--qh-ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .form-note a:hover {
+    color: var(--qh-bronze-deep);
+  }
+
+  @media (max-width: 980px) {
+    .details {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s8);
+    }
+
+    .enquiry-grid {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s10);
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s6);
+    }
+
+    .contact-stamp {
+      display: none;
+    }
+  }
+</style>

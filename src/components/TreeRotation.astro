@@ -1,0 +1,177 @@
+---
+// TreeRotation — The Source. Acacia senegal rotating on scroll.
+// The gum tree is the origin of everything; scroll turns it.
+// Video: 12s loop, 360° rotation, fixed camera. Fallback: 360-frame sequence.
+import fs from 'fs';
+import path from 'path';
+
+const videoWebm = 'public/assets/video/tree-rotation.webm';
+const videoMp4 = 'public/assets/video/tree-rotation.mp4';
+const hasWebm = fs.existsSync(videoWebm) && fs.statSync(videoWebm).size > 1000;
+const hasMp4 = fs.existsSync(videoMp4) && fs.statSync(videoMp4).size > 1000;
+---
+<section class="section tree-section" id="source" data-tree-section>
+  <div class="container">
+    <div class="form-head mono" data-reveal>
+      <span>Form No. QH/00 · The Source</span>
+      <span class="form-head-right">Acacia senegal · Sudan</span>
+    </div>
+
+    <div class="tree-wrapper">
+      <!-- Primary: video element (scrubbed via GSAP currentTime) -->
+      <video
+        class="tree-video"
+        muted
+        playsinline
+        loop
+        preload="auto"
+        poster="/assets/images/tree-poster.webp"
+        data-tree-video
+        aria-label="Acacia senegal rotating 360° — the source of gum arabic"
+      >
+        {hasWebm && <source src="/assets/video/tree-rotation.webm" type="video/webm" />}
+        {hasMp4 && <source src="/assets/video/tree-rotation.mp4" type="video/mp4" />}
+        <!-- Fallback: static frame sequence loaded via JS if video fails -->
+      </video>
+
+      <!-- Fallback frame sequence container (hidden unless video fails) -->
+      <div class="tree-frames" data-tree-frames aria-hidden="true">
+        <!-- Frames injected by JS: tree_000.png ... tree_359.png -->
+      </div>
+
+      <figcaption class="tree-caption label" data-reveal>
+        Fig. 00 — Acacia senegal · The Source · Port Sudan
+      </figcaption>
+    </div>
+
+    <dl class="tree-reg mono" data-reveal>
+      <div class="reg-item">
+        <dt class="reg-k">Species</dt>
+        <dd class="reg-v">Acacia senegal (L.) Willd.</dd>
+      </div>
+      <div class="reg-item">
+        <dt class="reg-k">Common name</dt>
+        <dd class="reg-v">Gum arabic tree / Hashab</dd>
+      </div>
+      <div class="reg-item">
+        <dt class="reg-k">Origin</dt>
+        <dd class="reg-v">Sudan, Sahel belt — 10°–14°N</dd>
+      </div>
+      <div class="reg-item">
+        <dt class="reg-k">Rotation</dt>
+        <dd class="reg-v">360° over scroll section</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .tree-section {
+    padding-block: var(--qh-s20);
+    background: var(--qh-paper);
+  }
+
+  .tree-wrapper {
+    position: relative;
+    max-inline-size: 60rem;
+    margin-inline: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .tree-video {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    border: 1px solid var(--qh-line);
+    background: var(--qh-surface);
+  }
+
+  .tree-frames {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    background: var(--qh-surface);
+    display: none; /* shown by JS if video fails */
+  }
+  .tree-frames.is-active {
+    display: block;
+  }
+  .tree-frames img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0ms; /* instant swap via JS */
+  }
+  .tree-frames img.is-visible {
+    opacity: 1;
+  }
+
+  .tree-caption {
+    text-align: center;
+    margin-block-start: var(--qh-s4);
+    color: var(--qh-ink-mute);
+  }
+
+  /* Registry strip */
+  .tree-reg {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-block: 1px solid var(--qh-line-strong);
+    margin-block-start: var(--qh-s12);
+  }
+
+  .reg-item {
+    display: grid;
+    gap: var(--qh-s1);
+    padding: var(--qh-s4) var(--qh-s4) var(--qh-s4) 0;
+  }
+
+  .reg-item + .reg-item {
+    border-inline-start: 1px solid var(--qh-line);
+    padding-inline-start: var(--qh-s4);
+  }
+
+  .reg-k {
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: var(--qh-text-xs);
+  }
+
+  .reg-v {
+    color: var(--qh-ink);
+    font-size: var(--qh-text-sm);
+  }
+
+  @media (max-width: 980px) {
+    .tree-reg {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .reg-item:nth-child(3) {
+      border-inline-start: none;
+      padding-inline-start: 0;
+      border-block-start: 1px solid var(--qh-line);
+    }
+
+    .reg-item:nth-child(4) {
+      border-block-start: 1px solid var(--qh-line);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .tree-reg {
+      grid-template-columns: 1fr;
+    }
+
+    .reg-item + .reg-item {
+      border-inline-start: none;
+      border-block-start: 1px solid var(--qh-line);
+      padding-inline-start: 0;
+    }
+  }
+</style>

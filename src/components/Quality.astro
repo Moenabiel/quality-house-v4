@@ -1,0 +1,370 @@
+---
+// Quality — Form No. QH/06, the control record. Three capabilities stated
+// as verification claims, plus the dossier's signature honesty device:
+// the methodology block ("how this record is written"), and slots that
+// hold "awaiting record" for data the house has not yet published —
+// nothing is invented to fill them.
+import Stamp from './Stamp.astro';
+import Arrow from './Arrow.astro';
+
+const capabilities = [
+  {
+    no: '01',
+    title: 'Inspect',
+    copy: 'Inspection, sampling and testing of agricultural products, drawn from the family business’s origins in cotton superintending.',
+    method: 'Method — sampling at points of origin; results recorded before contract.',
+  },
+  {
+    no: '02',
+    title: 'Document and trace',
+    copy: 'Export controls, documentation and traceability for international shipments. What is documented can be traced.',
+    method: 'Method — documents travel with the shipment; records kept at the house.',
+  },
+  {
+    no: '03',
+    title: 'Sourcing',
+    copy: 'Sourcing Sudanese agricultural products through established producer and supplier relationships.',
+    method: 'Method — named producer relationships, standing since the 1960s cotton work.',
+  },
+];
+---
+<section class="section section--deck" id="quality">
+  <div class="container">
+    <div class="form-head mono" data-reveal>
+      <span>Form No. QH/06 · Control record</span>
+      <span class="form-head-right">What is inspected is documented</span>
+    </div>
+
+    <header class="quality-head">
+      <h2 class="display-2" data-reveal>What is inspected is documented.</h2>
+      <p class="lead" data-reveal>
+        Our work is organised around verification: what is sourced is
+        inspected, what is inspected is documented, and what is documented
+        can be traced.
+      </p>
+    </header>
+
+    <div class="quality-body">
+      <div>
+        <ol class="capability-list" role="list">
+          {capabilities.map((c) => (
+            <li class="capability" data-reveal>
+              <span class="cap-no mono">{c.no}</span>
+              <div>
+                <h3 class="display-3">{c.title}</h3>
+                <p>{c.copy}</p>
+                <p class="cap-method mono">{c.method}</p>
+              </div>
+              <span class="cap-mark verified mono" aria-hidden="true">REC</span>
+            </li>
+          ))}
+          <!-- Honest empty slot: an evidence category the house plans to
+               publish; nothing is invented to fill it. -->
+          <li class="capability capability--awaiting" data-reveal>
+            <span class="cap-no mono">04</span>
+            <div>
+              <h3 class="display-3">Season records</h3>
+              <div class="awaiting">
+                awaiting record — QH/seasonally published volumes, in preparation
+              </div>
+              <p class="cap-method mono">
+                Slot reserved — figures will appear only with the house’s own sign-off.
+              </p>
+            </div>
+            <span class="cap-mark mono" aria-hidden="true">—</span>
+          </li>
+        </ol>
+
+        <blockquote class="quality-quote" data-reveal>
+          <span class="quote-rule" aria-hidden="true"></span>
+          <div>
+            <p>
+              “What is sourced is inspected, what is inspected is documented,
+              and what is documented can be traced.”
+            </p>
+            <cite class="label">Quality House — control record</cite>
+          </div>
+        </blockquote>
+      </div>
+
+      <figure class="quality-media" data-reveal-media>
+        <div class="duotone">
+          <img
+            src="/assets/images/cotton-field.webp"
+            alt="Cotton plants at the field stage, Sudan"
+            width="1600"
+            height="1200"
+            style="object-position: 50% 20%;"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="label">Fig. 07 — Cotton at the field stage · Sudan</figcaption>
+        <div class="qm-stamp" data-stamp>
+          <Stamp size="4.75rem" />
+        </div>
+      </figure>
+    </div>
+
+    <!-- The methodology block — the document shows its own working -->
+    <div class="method" data-reveal>
+      <details class="method-sheet">
+        <summary>
+          <span class="mono">How this record is written</span>
+          <span class="mono method-hint">— open</span>
+        </summary>
+        <div class="method-body">
+          <p>
+            This page names only what the house can put a document against.
+            Claims are limited to: species, grades, origin ports,
+            superintending steps, and named offices. Figures carry their own
+            denominators. Where a fact is not yet published, the slot says
+            so rather than borrowing a number.
+          </p>
+          <p>
+            Specifications for a given shipment are confirmed with the buyer
+            before contract; the contract itself carries the final
+            specification, sampling and control terms.
+          </p>
+          <p class="mono method-note">
+            Errors in this record go to
+            <a class="text-link" href="mailto:info@qualityhouse.sd">info@qualityhouse.sd</a>
+            — the house corrects its documents.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mono {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--qh-s4);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-block-end: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s12);
+  }
+
+  .quality-head {
+    max-inline-size: var(--qh-measure);
+    display: grid;
+    gap: var(--qh-s6);
+    margin-block-end: var(--qh-s16);
+  }
+
+  .quality-body {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: calc(var(--qh-s16) + var(--qh-s4));
+    align-items: start;
+  }
+
+  .capability-list {
+    display: grid;
+  }
+
+  .capability {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--qh-s8);
+    align-items: baseline;
+    padding-block: var(--qh-s8);
+    border-block-start: 1px solid var(--qh-line);
+  }
+
+  .capability:last-of-type {
+    border-block-end: 1px solid var(--qh-line);
+  }
+
+  .capability--awaiting {
+    align-items: start;
+  }
+
+  .cap-no {
+    color: var(--qh-bronze-deep);
+    font-size: var(--qh-text-sm);
+  }
+
+  .capability h3 {
+    color: var(--qh-ink);
+  }
+
+  .capability p {
+    margin-block-start: var(--qh-s3);
+    color: var(--qh-ink-2);
+    max-inline-size: var(--qh-measure-tight);
+    text-wrap: pretty;
+  }
+
+  .cap-method {
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.03em;
+  }
+
+  .cap-mark {
+    font-size: var(--qh-text-xs);
+    letter-spacing: 0.08em;
+    border: 1px solid var(--qh-line-strong);
+    border-radius: var(--qh-r-control);
+    padding: var(--qh-s1) var(--qh-s2);
+  }
+
+  .capability--awaiting .awaiting {
+    margin-block-start: var(--qh-s3);
+  }
+
+  /* The quote — flush-left, as everywhere in the dossier. */
+  .quality-quote {
+    margin-block: var(--qh-s20) 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--qh-s8);
+    align-items: start;
+    max-inline-size: var(--qh-form-max);
+  }
+
+  .quote-rule {
+    display: block;
+    inline-size: 3px;
+    align-self: stretch;
+    background: var(--qh-bronze);
+  }
+
+  .quality-quote p {
+    font-family: var(--qh-font-serif, var(--qh-font-display));
+    font-size: var(--qh-display-3);
+    line-height: 1.3;
+    max-inline-size: var(--qh-measure-tight);
+  }
+
+  .quality-quote cite {
+    display: block;
+    margin-block-start: var(--qh-s4);
+  }
+
+  /* --- Side plate ------------------------------------------------------------ */
+  .quality-media {
+    position: relative;
+    border: 1px solid var(--qh-line);
+    background: var(--qh-surface);
+  }
+
+  .quality-media figcaption {
+    padding: var(--qh-s3) var(--qh-s4);
+    border-block-start: 1px solid var(--qh-line);
+  }
+
+  .qm-stamp {
+    position: absolute;
+    inset-block-end: 1rem;
+    inset-inline-end: 0.75rem;
+  }
+
+  /* The plate sticks while the reader walks the capability list (desktop). */
+  @media (min-width: 981px) {
+    .quality-media {
+      position: sticky;
+      inset-block-start: calc(var(--qh-header-h) + var(--qh-s8));
+    }
+
+    .qm-stamp {
+      position: absolute;
+    }
+  }
+
+  /* --- Methodology sheet --------------------------------------------------------- */
+  .method {
+    margin-block-start: var(--qh-s16);
+  }
+
+  .method-sheet {
+    border: 1px solid var(--qh-line-strong);
+    background: var(--qh-surface);
+  }
+
+  .method-sheet summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--qh-s4);
+    padding: var(--qh-s4) var(--qh-s5);
+    cursor: pointer;
+    transition: background-color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .method-sheet summary:hover {
+    background: var(--qh-surface-2);
+  }
+
+  .method-sheet summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .method-sheet summary > .mono:first-child {
+    color: var(--qh-ink);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .method-hint {
+    color: var(--qh-ink-mute);
+  }
+
+  .method-sheet[open] summary {
+    border-block-end: 1px solid var(--qh-line);
+  }
+
+  .method-sheet[open] .method-hint {
+    visibility: hidden;
+  }
+
+  .method-body {
+    display: grid;
+    gap: var(--qh-s4);
+    padding: var(--qh-s6) var(--qh-s5);
+    max-inline-size: var(--qh-measure);
+  }
+
+  .method-body p {
+    color: var(--qh-ink-2);
+    text-wrap: pretty;
+  }
+
+  .method-note {
+    color: var(--qh-ink-mute);
+  }
+
+  @media (max-width: 980px) {
+    .quality-body {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s12);
+    }
+
+    .quality-media {
+      position: relative;
+      inset-block-start: 0;
+      max-inline-size: 34rem;
+    }
+
+    .capability {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .cap-mark {
+      display: none;
+    }
+  }
+</style>

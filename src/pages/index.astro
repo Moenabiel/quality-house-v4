@@ -1,0 +1,50 @@
+---
+// Homepage — Quality House v4, The Consignment Dossier. All copy is real
+// content from the existing site (CONTENT-SOURCE.md).
+import Base from '../layouts/Base.astro';
+import Cover from '../components/Cover.astro';
+import ScrollProgress from '../components/ScrollProgress.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Statement from '../components/Statement.astro';
+import Products from '../components/Products.astro';
+import Journey from '../components/Journey.astro';
+import RootsSection from '../components/RootsSection.astro';
+import Quality from '../components/Quality.astro';
+import Group from '../components/Group.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import TreeRotation from '../components/TreeRotation.astro';
+---
+
+<Base
+  title="Quality House — Sudanese agricultural export house | Gum arabic, cotton, seeds"
+  description="Quality House connects Sudan's agricultural potential with international markets through responsible sourcing, quality assurance, product inspection and disciplined export execution. Gum arabic, cotton, seeds."
+  page="home"
+>
+  <Cover />
+  <ScrollProgress />
+  <Nav />
+
+  <main id="main">
+    <Hero />
+    <!-- QH/00 — The Source: the gum tree rotates on scroll -->
+    <TreeRotation />
+    <!-- QH/02 — the house: heritage, record, instruction -->
+    <Statement />
+    <!-- QH/03 — the produce register -->
+    <Products />
+    <!-- QH/04 — chain of custody -->
+    <Journey />
+    <!-- QH/05 — the house register (people) -->
+    <RootsSection />
+    <!-- QH/06 — control record + methodology -->
+    <Quality />
+    <!-- QH/07 — registered entities -->
+    <Group />
+    <!-- QH/08 — instruction sheet -->
+    <Contact />
+  </main>
+
+  <Footer />
+</Base>

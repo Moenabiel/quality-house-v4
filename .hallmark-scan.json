@@ -1,0 +1,574 @@
+﻿{
+  "summary": {
+    "fails": 39,
+    "reflex": 6,
+    "warns": 17,
+    "waived": 0,
+    "rejected": 0,
+    "answered": 0,
+    "dismissed": 0,
+    "notes": 0,
+    "files": 25,
+    "render": "off"
+  },
+  "findings": [
+    {
+      "gate": "10a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\PaperCrease.astro",
+      "line": 30,
+      "evidence": "@keyframes crease-progress animates inset-inline-end",
+      "fix": "Animate transform or opacity instead"
+    },
+    {
+      "gate": "10a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\PaperCrease.astro",
+      "line": 34,
+      "evidence": "@keyframes crease-progress animates inset-inline-end",
+      "fix": "Animate transform or opacity instead"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Contact.astro",
+      "line": 30,
+      "evidence": "dash \"ÔÇö\" in copy",
+      "fix": "A comma, a colon, a full stop or parentheses; never a dash"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Group.astro",
+      "line": 66,
+      "evidence": "dash \"ÔÇö\" in copy",
+      "fix": "A comma, a colon, a full stop or parentheses; never a dash"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Journey.astro",
+      "line": 46,
+      "evidence": "dash \"ÔÇö\" in copy",
+      "fix": "A comma, a colon, a full stop or parentheses; never a dash"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\RootsSection.astro",
+      "line": 162,
+      "evidence": "dash \"ÔÇö\" in copy",
+      "fix": "A comma, a colon, a full stop or parentheses; never a dash"
+    },
+    {
+      "gate": "20",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\styles\\global.css",
+      "line": 1,
+      "evidence": "no Hallmark stamp on the first non-empty line of any CSS",
+      "fix": "The stamp comment is line 1 of the CSS; only @charset may precede it"
+    },
+    {
+      "gate": "34",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\layouts\\Base.astro",
+      "line": 1,
+      "evidence": "no overflow-x: clip on html and body",
+      "fix": "overflow-x: clip on both html and body"
+    },
+    {
+      "gate": "34",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\styles\\global.css",
+      "line": 363,
+      "evidence": "overflow-x: hidden on html.is-menu-open (breaks sticky)",
+      "fix": "Use overflow-x: clip on both html and body, never hidden"
+    },
+    {
+      "gate": "38i",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Hero.astro",
+      "line": 17,
+      "evidence": "<em>/<i> inside <h1>",
+      "fix": "Roman headers; emphasis via weight or accent"
+    },
+    {
+      "gate": "38i",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Quality.astro",
+      "line": 10,
+      "evidence": "<em>/<i> inside <h2>",
+      "fix": "Roman headers; emphasis via weight or accent"
+    },
+    {
+      "gate": "38i",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Statement.astro",
+      "line": 11,
+      "evidence": "<em>/<i> inside <h2>",
+      "fix": "Roman headers; emphasis via weight or accent"
+    },
+    {
+      "gate": "50",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Footer.astro",
+      "line": 211,
+      "evidence": "bare 1fr track holds images (.footer-grid)",
+      "fix": "Use minmax(0, 1fr) for image tracks"
+    },
+    {
+      "gate": "50",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Group.astro",
+      "line": 191,
+      "evidence": "bare 1fr track holds images (.member-list)",
+      "fix": "Use minmax(0, 1fr) for image tracks"
+    },
+    {
+      "gate": "50",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Products.astro",
+      "line": 169,
+      "evidence": "bare 1fr track holds images (.product-row, .product-row:nth-child(even))",
+      "fix": "Use minmax(0, 1fr) for image tracks"
+    },
+    {
+      "gate": "50",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Quality.astro",
+      "line": 179,
+      "evidence": "bare 1fr track holds images (.quality-body)",
+      "fix": "Use minmax(0, 1fr) for image tracks"
+    },
+    {
+      "gate": "50",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\RootsSection.astro",
+      "line": 349,
+      "evidence": "bare 1fr track holds images (.roots-grid)",
+      "fix": "Use minmax(0, 1fr) for image tracks"
+    },
+    {
+      "gate": "50",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Statement.astro",
+      "line": 171,
+      "evidence": "bare 1fr track holds images (.statement-grid)",
+      "fix": "Use minmax(0, 1fr) for image tracks"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Group.astro",
+      "line": 10,
+      "evidence": "eyebrow \"Sudan ┬À Egypt\" before <h2>",
+      "fix": "Cut it; the heading already says this (craft.md ┬º 7 has twelve other openings)"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\ProductHero.astro",
+      "line": 23,
+      "evidence": "eyebrow \"{product.eyebrow}\" before <h1>",
+      "fix": "Cut it; the heading already says this (craft.md ┬º 7 has twelve other openings)"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Products.astro",
+      "line": 46,
+      "evidence": "eyebrow \"One soil ┬À the worldÔÇÖs basket\" before <h2>",
+      "fix": "Cut it; the heading already says this (craft.md ┬º 7 has twelve other openings)"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Products.astro",
+      "line": 58,
+      "evidence": "eyebrow \"{p.index}\" before <h3>",
+      "fix": "Cut it; the heading already says this (craft.md ┬º 7 has twelve other openings)"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Quality.astro",
+      "line": 9,
+      "evidence": "eyebrow \"Quality and capabilities\" before <h2>",
+      "fix": "Cut it; the heading already says this (craft.md ┬º 7 has twelve other openings)"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\RootsSection.astro",
+      "line": 157,
+      "evidence": "eyebrow \"The roots\" before <h2>",
+      "fix": "Cut it; the heading already says this (craft.md ┬º 7 has twelve other openings)"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Statement.astro",
+      "line": 10,
+      "evidence": "eyebrow \"The Acacia Tree of Sudan\" before <h2>",
+      "fix": "Cut it; the heading already says this (craft.md ┬º 7 has twelve other openings)"
+    },
+    {
+      "gate": "62",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\CropSequencer.astro",
+      "line": 110,
+      "evidence": ".crop-sequencer__chase is hidden at rest (opacity: 0) and depends on a script to appear",
+      "fix": "Visible by default: scope the hidden state under a .js class the script adds, or animate from visible with @starting-style"
+    },
+    {
+      "gate": "63",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Hero.astro",
+      "line": 69,
+      "evidence": "middle-dot meta string \"Method Source ┬À inspect ┬À document\"",
+      "fix": "Line breaks, columns or hairlines; one dot in a byline at most"
+    },
+    {
+      "gate": "63",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Hero.astro",
+      "line": 71,
+      "evidence": "middle-dot meta string \"Source ┬À inspect ┬À document\"",
+      "fix": "Line breaks, columns or hairlines; one dot in a byline at most"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Contact.astro",
+      "line": 233,
+      "evidence": ".field label: uppercase in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\CropSequencer.astro",
+      "line": 42,
+      "evidence": ".crop-step: uppercase at 13px in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Hero.astro",
+      "line": 112,
+      "evidence": ".hero-plate__head: uppercase control on a page whose display is not uppercase",
+      "fix": "Controls follow the display voice: sentence case here, or tracking 0.04em at most where the display itself is uppercase"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Hero.astro",
+      "line": 264,
+      "evidence": ".hero-caption: uppercase in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Nav.astro",
+      "line": 104,
+      "evidence": ".nav-links a: uppercase in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Nav.astro",
+      "line": 138,
+      "evidence": ".nav-cta: uppercase in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Nav.astro",
+      "line": 161,
+      "evidence": ".nav-toggle: uppercase in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\components\\Products.astro",
+      "line": 127,
+      "evidence": ".p-meta: uppercase in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\styles\\global.css",
+      "line": 110,
+      "evidence": ".label: uppercase tracked 0.16em at 12px in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\styles\\global.css",
+      "line": 149,
+      "evidence": ".btn: uppercase control on a page whose display is not uppercase",
+      "fix": "Controls follow the display voice: sentence case here, or tracking 0.04em at most where the display itself is uppercase"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "src\\styles\\global.css",
+      "line": 292,
+      "evidence": ".skip-link: uppercase tracked 0.16em at 12px in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "26b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "src\\components\\Arrow.astro",
+      "line": 1,
+      "evidence": "no :disabled styling anywhere",
+      "fix": "All eight states; guard: not a form control, no aria-disabled anywhere"
+    },
+    {
+      "gate": "38iii",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "src\\components\\Quality.astro",
+      "line": 77,
+      "evidence": "accented word inside a heading (.quality-head h2 em)",
+      "fix": "Set the whole head one way: a line break, a second line at a second size, or the whole head in the accent. Guard: the theme names the coloured word as its signature and it appears once on the page, in the hero"
+    },
+    {
+      "gate": "38ii",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "src\\components\\Quality.astro",
+      "line": 79,
+      "evidence": "italic display type on .quality-head h2 em",
+      "fix": "Roman headers; emphasis via weight or accent"
+    },
+    {
+      "gate": "38iii",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "src\\components\\Statement.astro",
+      "line": 83,
+      "evidence": "accented word inside a heading (.statement-copy h2 em)",
+      "fix": "Set the whole head one way: a line break, a second line at a second size, or the whole head in the accent. Guard: the theme names the coloured word as its signature and it appears once on the page, in the hero"
+    },
+    {
+      "gate": "38ii",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "src\\components\\Statement.astro",
+      "line": 85,
+      "evidence": "italic display type on .statement-copy h2 em",
+      "fix": "Roman headers; emphasis via weight or accent"
+    },
+    {
+      "gate": "64",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "src\\components\\Hero.astro",
+      "line": 280,
+      "evidence": "monospace label voice on .hero-caption__index, .hero-caption__origin",
+      "fix": "Labels in the body face, a step smaller, sentence case; mono only for code and figures"
+    },
+    {
+      "gate": "11",
+      "grade": "WARN",
+      "tier": "reflex",
+      "file": "src\\components\\Products.astro",
+      "line": 163,
+      "evidence": "image transforms on hover (.product-row:hover .p-media img)",
+      "fix": "Imagery sits still; give the container the feedback"
+    },
+    {
+      "gate": "28a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\Footer.astro",
+      "line": 10,
+      "evidence": "lazy-loaded first image (likely LCP)",
+      "fix": "fetchpriority=high on the LCP element"
+    },
+    {
+      "gate": "28a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\Group.astro",
+      "line": 65,
+      "evidence": "lazy-loaded first image (likely LCP)",
+      "fix": "fetchpriority=high on the LCP element"
+    },
+    {
+      "gate": "28a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\Journey.astro",
+      "line": 95,
+      "evidence": "lazy-loaded first image (likely LCP)",
+      "fix": "fetchpriority=high on the LCP element"
+    },
+    {
+      "gate": "28a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\ProductHero.astro",
+      "line": 40,
+      "evidence": "lazy-loaded first image (likely LCP)",
+      "fix": "fetchpriority=high on the LCP element"
+    },
+    {
+      "gate": "28a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\Products.astro",
+      "line": 65,
+      "evidence": "lazy-loaded first image (likely LCP)",
+      "fix": "fetchpriority=high on the LCP element"
+    },
+    {
+      "gate": "28a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\Quality.astro",
+      "line": 43,
+      "evidence": "lazy-loaded first image (likely LCP)",
+      "fix": "fetchpriority=high on the LCP element"
+    },
+    {
+      "gate": "28a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\RootsSection.astro",
+      "line": 179,
+      "evidence": "lazy-loaded first image (likely LCP)",
+      "fix": "fetchpriority=high on the LCP element"
+    },
+    {
+      "gate": "28a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\Statement.astro",
+      "line": 28,
+      "evidence": "lazy-loaded first image (likely LCP)",
+      "fix": "fetchpriority=high on the LCP element"
+    },
+    {
+      "gate": "28a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\pages\\products\\[slug].astro",
+      "line": 39,
+      "evidence": "lazy-loaded first image (likely LCP)",
+      "fix": "fetchpriority=high on the LCP element"
+    },
+    {
+      "gate": "42",
+      "grade": "WARN",
+      "tier": "reflex",
+      "file": "src\\components\\Footer.astro",
+      "line": 5,
+      "evidence": "default footer shape: 4 equal columns of links",
+      "fix": "Decide the footer and name it in the stamp, or build another shape"
+    },
+    {
+      "gate": "58",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\Hero.astro",
+      "line": 17,
+      "evidence": "h1 runs 9 words (\"From Sudan to the world. Quality you caÔÇª\")",
+      "fix": "Seven words or fewer, 50 characters or fewer"
+    },
+    {
+      "gate": "58",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "src\\components\\Hero.astro",
+      "line": 23,
+      "evidence": "hero paragraph runs 20 words",
+      "fix": "One sentence, twelve words or fewer"
+    },
+    {
+      "gate": "F1",
+      "grade": "WARN",
+      "tier": "finish",
+      "file": "src\\components\\Hero.astro",
+      "line": 24,
+      "evidence": "straight quote in prose x1 (first: se connects Sudan's agricultural)",
+      "fix": "Use typographic quotes: ÔÇ£ ÔÇØ ÔÇÖ"
+    },
+    {
+      "gate": "F3",
+      "grade": "WARN",
+      "tier": "finish",
+      "file": "src\\components\\ProductHero.astro",
+      "line": 75,
+      "evidence": "no text-wrap: balance on any display head (3 head rule(s), e.g. .product-hero h1)",
+      "fix": "Add text-wrap: balance to h1/h2-level heads"
+    },
+    {
+      "gate": "F3",
+      "grade": "WARN",
+      "tier": "finish",
+      "file": "src\\pages\\products\\[slug].astro",
+      "line": 110,
+      "evidence": "no text-wrap: balance on any display head (2 head rule(s), e.g. .product-hero h1)",
+      "fix": "Add text-wrap: balance to h1/h2-level heads"
+    },
+    {
+      "gate": "F8",
+      "grade": "WARN",
+      "tier": "finish",
+      "file": "src\\components\\PaperCrease.astro",
+      "line": 24,
+      "evidence": "2 scroll-choreography patterns on one page (quality-word, paper-crease)",
+      "fix": "Budget is one scroll pattern per page (scroll-choreography.md); cut the rest"
+    }
+  ]
+}

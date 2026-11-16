@@ -1,0 +1,53 @@
+---
+// Cover — the dossier strip that lifts on entry. A short, decisive opening:
+// the house mark sits, one mono line lands, the strip lifts. No counter
+// (retired v3 device — a counter claims a load this build does not have).
+---
+<div class="cover" data-cover aria-hidden="true">
+  <div class="cover-inner">
+    <span class="cover-mark">QH/1967</span>
+    <span class="cover-line">Consignments · specifications · control records</span>
+  </div>
+</div>
+
+<style>
+  .cover {
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--qh-z-nav) + 30);
+    background: var(--qh-green);
+    display: grid;
+    place-items: center;
+    will-change: transform;
+  }
+
+  /* No-JS contract: without the .js hook the fixed cover would occlude the
+     whole document forever (JS is what lifts it). No JS → no cover shelf. */
+  html:not(.js) .cover {
+    display: none;
+  }
+
+  .cover-inner {
+    display: grid;
+    gap: var(--qh-s4);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .cover-mark {
+    font-family: var(--qh-font-display);
+    font-size: var(--qh-display-3);
+    font-weight: 600;
+    color: var(--qh-on-green);
+    letter-spacing: 0.04em;
+  }
+
+  .cover-line {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--qh-on-green);
+    opacity: 0.7;
+  }
+</style>

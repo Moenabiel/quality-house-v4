@@ -1,0 +1,229 @@
+---
+// Footer — the closing surface of the dossier (deep Acacia Green).
+// Brand, sections index (with form numbers), 7 group companies, real
+// office contacts, legal line + the real routes disclaimer + the seal.
+// No invented claims.
+import Stamp from './Stamp.astro';
+---
+<footer class="footer" transition:persist="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="f-brand">
+        <a class="brand" href="/">
+          <img src="/qh-mark-sm.webp" alt="" width="28" height="28" loading="lazy" />
+          <span>Quality House</span>
+        </a>
+        <p class="f-line">From Sudan to the world. Quality you can trust.</p>
+        <div class="f-stamp" data-stamp>
+          <Stamp size="5.5rem" class="stamp--on-green" />
+        </div>
+      </div>
+
+      <nav class="f-nav" aria-label="Footer sections">
+        <span class="label">Sections</span>
+        <ul role="list" class="mono">
+          <li><a href="/#story"><span class="f-no">02</span>Story</a></li>
+          <li><a href="/#products"><span class="f-no">03</span>Products</a></li>
+          <li><a href="/#journey"><span class="f-no">04</span>Journey</a></li>
+          <li><a href="/#roots"><span class="f-no">05</span>Register</a></li>
+          <li><a href="/#quality"><span class="f-no">06</span>Quality</a></li>
+          <li><a href="/#group"><span class="f-no">07</span>Group</a></li>
+          <li><a href="/#contact"><span class="f-no">08</span>Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="f-group" aria-label="Group companies">
+        <span class="label">Group companies</span>
+        <ul role="list" class="mono">
+          <li>Quality House</li>
+          <li>Sudanese Center for Quality Assurance</li>
+          <li>Ibrahim Brothers Co. Ltd.</li>
+          <li>Agro Products Egypt</li>
+          <li>Sudanese German Center for Quality Assurance</li>
+          <li>Awlad Ibrahim Flour Mills Co. Ltd</li>
+          <li>Nile Cotton</li>
+        </ul>
+      </div>
+
+      <div class="f-contact">
+        <span class="label">Contact</span>
+        <ul role="list" class="mono">
+          <li><a href="mailto:info@qualityhouse.sd">info@qualityhouse.sd</a></li>
+          <li><a href="mailto:sales@qualityhouse.sd">sales@qualityhouse.sd</a></li>
+          <li><a href="tel:+249183286001">+249 183 286001</a> · Sudan</li>
+          <li><a href="tel:+20233370504">+20 233370504</a> · Egypt</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-legal mono">
+      <hr class="rule" />
+      <p>© 2026 Quality House · Established 1967 · The Consignment Dossier, rev. 2026</p>
+      <p>Routes shown are indicative trade lanes, not specific shipments.</p>
+      <a class="text-link to-top" href="#main">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* The closing band is the one deep Acacia Green surface on the page.
+     Ink/line roles re-point to the on-green values here so every
+     descendant inherits correct contrast without knowing it is on green. */
+  .footer {
+    --qh-ink: var(--qh-on-green);
+    --qh-ink-2: color-mix(in srgb, var(--qh-on-green) 82%, transparent);
+    --qh-ink-mute: color-mix(in srgb, var(--qh-on-green) 60%, transparent);
+    --qh-line: var(--qh-line-inverse);
+    --qh-line-strong: color-mix(in srgb, var(--qh-on-green) 40%, transparent);
+    --qh-bronze-deep: var(--qh-on-green);
+
+    background: var(--qh-green);
+    color: var(--qh-on-green);
+    padding-block: var(--qh-s20) var(--qh-s12);
+    border-block-start: 1px solid var(--qh-line-inverse);
+  }
+
+  .footer .rule {
+    background: var(--qh-line-inverse);
+  }
+
+  .mono {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 5fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--qh-gap);
+  }
+
+  .f-brand {
+    display: grid;
+    gap: var(--qh-s6);
+    align-content: start;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--qh-s3);
+    text-decoration: none;
+  }
+
+  .brand span {
+    font-family: var(--qh-font-serif, var(--qh-font-display));
+    font-size: var(--qh-text-lg);
+    font-weight: 500;
+    letter-spacing: var(--qh-track-display);
+    color: var(--qh-ink);
+  }
+
+  .f-line {
+    color: var(--qh-ink-2);
+    font-family: var(--qh-font-serif, var(--qh-font-display));
+    font-size: var(--qh-text-lg);
+    max-inline-size: var(--qh-measure-tight);
+  }
+
+  /* The seal is light bronze on green — the on-green re-point makes it
+     legible (contrast re-verified in the axe pass). */
+  .f-stamp {
+    color: color-mix(in srgb, var(--qh-on-green) 78%, var(--qh-bronze) 22%);
+    opacity: 0.92;
+  }
+
+  .f-nav ul,
+  .f-contact ul,
+  .f-group ul {
+    display: grid;
+    gap: var(--qh-s2);
+    padding-block-start: var(--qh-s2);
+  }
+
+  .f-nav a {
+    color: var(--qh-ink-2);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .f-nav a:hover {
+    color: var(--qh-on-green);
+  }
+
+  .f-no {
+    color: var(--qh-ink-mute);
+    margin-inline-end: var(--qh-s2);
+  }
+
+  .f-group li,
+  .f-contact li {
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.02em;
+  }
+
+  /* A phone and its country are one datum — they must never orphan the
+     "· country" onto its own line at narrow widths. */
+  .f-contact li {
+    white-space: nowrap;
+  }
+
+  .f-nav .label,
+  .f-contact .label,
+  .f-group .label {
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.1em;
+    border-block-end: 1px solid var(--qh-line-inverse);
+    padding-block-end: var(--qh-s2);
+  }
+
+  .f-contact a,
+  .f-group li {
+    color: var(--qh-ink-2);
+    text-decoration: none;
+  }
+
+  .f-contact a:hover {
+    color: var(--qh-on-green);
+  }
+
+  .footer-legal {
+    margin-block-start: var(--qh-s16);
+    color: var(--qh-ink-mute);
+  }
+
+  .footer-legal p {
+    padding-block-start: var(--qh-s3);
+  }
+
+  .footer-legal .text-link {
+    color: var(--qh-ink-2);
+    border-color: var(--qh-line-inverse);
+    margin-block-start: var(--qh-s4);
+    display: table;
+  }
+
+  .footer-legal .text-link:hover {
+    color: var(--qh-on-green);
+  }
+
+  @media (max-width: 980px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s12);
+    }
+
+    .f-brand {
+      grid-column: auto;
+    }
+
+    /* The seal survives mobile — the desk tool of the verification mark.
+       It simply stacks in the f-brand column (brand → tagline → seal). */
+    .f-stamp {
+      translate: 0 -0.5rem;
+    }
+  }
+</style>

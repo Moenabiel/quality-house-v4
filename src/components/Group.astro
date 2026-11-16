@@ -1,0 +1,270 @@
+---
+// Group — Form No. QH/07, the registered entities. Parent + six real
+// specialised companies as register rows (v3's card grid retired: the
+// register row is the dossier's anatomy for a list of named entities).
+// Memberships with real logos. Company facts verbatim from
+// the group page (CONTENT-SOURCE.md).
+import Stamp from './Stamp.astro';
+import Arrow from './Arrow.astro';
+
+const companies = [
+  {
+    no: '07·01',
+    name: 'Quality House',
+    role: 'Parent organization',
+    note: 'From Sudan to the World. Quality You Can Trust.',
+    parent: true,
+  },
+  {
+    no: '07·02',
+    name: 'Sudanese Center for Quality Assurance',
+    role: 'Quality assurance · GM: Ammar Ahmed Mohammed',
+    note: 'A Quality House company specialising in quality assurance.',
+    parent: false,
+  },
+  {
+    no: '07·03',
+    name: 'Ibrahim Brothers Co. Ltd.',
+    role: 'Group company',
+    note: 'A member company of the Quality House group.',
+    parent: false,
+  },
+  {
+    no: '07·04',
+    name: 'Agro Products Egypt',
+    role: 'Operations in Egypt',
+    note: 'A Quality House-owned company operating in Egypt.',
+    parent: false,
+  },
+  {
+    no: '07·05',
+    name: 'Sudanese German Center for Quality Assurance',
+    role: 'Training and auditing · GM: Manal Abubaker Alsiddig',
+    note: 'A Quality House centre specialising in quality assurance.',
+    parent: false,
+  },
+  {
+    no: '07·06',
+    name: 'Awlad Ibrahim Flour Mills Co. Ltd',
+    role: 'Milling',
+    note: 'A Quality House-owned company in Sudan.',
+    parent: false,
+  },
+  {
+    no: '07·07',
+    name: 'Nile Cotton',
+    role: 'Group company',
+    note: 'A member company of the Quality House group.',
+    parent: false,
+  },
+];
+
+const memberships = [
+  {
+    img: '/assets/logos/aipg-logo.svg',
+    name: 'AIPG (Association for International Promotion of Gums)',
+  },
+  {
+    img: '/assets/images/international-cotton-association.png',
+    name: 'International Cotton Association (ICA)',
+  },
+  {
+    img: '/assets/images/ahk-egypt.svg',
+    name: 'AHK Egypt (German-Arab Chamber of Industry and Commerce)',
+  },
+];
+---
+<section class="section" id="group">
+  <div class="container">
+    <div class="form-head mono" data-reveal>
+      <span>Form No. QH/07 · Registered entities</span>
+      <span class="form-head-right">A group, not a single desk</span>
+    </div>
+
+    <header class="group-head">
+      <h2 class="display-2" data-reveal>A group, not a single desk.</h2>
+      <p class="lead" data-reveal>
+        Quality House is the parent organization of a diversified group of
+        specialised companies. The group spans quality assurance,
+        agricultural products, milling and cotton, with operations in Sudan
+        and Egypt.
+      </p>
+      <a class="text-link" data-reveal href="https://qualityhouseintl.com/group">
+        See the group <Arrow />
+      </a>
+    </header>
+
+    <ol class="entity-list mono" role="list">
+      {companies.map((c) => (
+        <li class="entity" data-reveal>
+          <span class="e-no">{c.no}</span>
+          <span class="e-name">{c.name}</span>
+          <span class="e-role">{c.role}</span>
+          <span class="e-note">{c.note}</span>
+        </li>
+      ))}
+    </ol>
+
+    <div class="memberships" data-reveal>
+      <header class="m-head">
+        <span class="label">Memberships</span>
+        <span class="mono m-note">Named bodies — proof of standing, not decoration</span>
+        <span class="m-stamp" data-stamp>
+          <Stamp size="4rem" />
+        </span>
+      </header>
+      <ul class="member-list" role="list">
+        {memberships.map((m) => (
+          <li>
+            <img src={m.img} alt="" width="56" loading="lazy" decoding="async" />
+            <span>{m.name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mono {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--qh-s4);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-block-end: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s12);
+  }
+
+  .group-head {
+    max-inline-size: var(--qh-measure);
+    display: grid;
+    gap: var(--qh-s6);
+    margin-block-end: var(--qh-s16);
+  }
+
+  /* --- Entity register ---------------------------------------------------------- */
+  .entity-list {
+    display: grid;
+    border-block: 1px solid var(--qh-line-strong);
+  }
+
+  .entity {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 5fr) minmax(0, 4fr) minmax(0, 4fr);
+    gap: var(--qh-s5);
+    align-items: baseline;
+    padding-block: var(--qh-s5);
+    border-block-end: 1px solid var(--qh-line);
+    transition:
+      background-color var(--qh-dur-fast) var(--qh-ease-press),
+      box-shadow var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .entity:last-child,
+  .entity:nth-last-child(1):nth-child(odd) {
+    border-block-end: 1px solid var(--qh-line);
+  }
+
+  .entity:last-child {
+    border-block-end: 1px solid var(--qh-line);
+  }
+
+  .entity:hover {
+    background: var(--qh-surface);
+    box-shadow: inset 3px 0 0 var(--qh-bronze);
+  }
+
+  .e-no {
+    color: var(--qh-bronze-deep);
+  }
+
+  .e-name {
+    font-weight: 600;
+    color: var(--qh-ink);
+  }
+
+  .e-role {
+    color: var(--qh-ink-2);
+  }
+
+  .e-note {
+    color: var(--qh-ink-mute);
+  }
+
+  /* --- Memberships ------------------------------------------------------------------ */
+  .memberships {
+    position: relative;
+    margin-block-start: var(--qh-s16);
+    border-block-start: 1px solid var(--qh-line-strong);
+    padding-block-start: var(--qh-s8);
+  }
+
+  .m-head {
+    display: flex;
+    align-items: center;
+    gap: var(--qh-s4);
+    margin-block-end: var(--qh-s6);
+  }
+
+  .m-note {
+    color: var(--qh-ink-mute);
+  }
+
+  .m-stamp {
+    margin-inline-start: auto;
+    translate: 0.5rem -1rem;
+  }
+
+  .member-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--qh-s6);
+  }
+
+  .member-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--qh-s4);
+    padding: var(--qh-s4);
+    border: 1px solid var(--qh-line);
+    background: var(--qh-surface);
+    min-block-size: 100%;
+  }
+
+  .member-list img {
+    inline-size: 3.5rem;
+    block-size: auto;
+    flex: none;
+  }
+
+  .member-list span {
+    color: var(--qh-ink-2);
+  }
+
+  @media (max-width: 980px) {
+    .entity {
+      grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 2fr);
+    }
+
+    .e-note {
+      display: none;
+    }
+
+    .member-list {
+      grid-template-columns: 1fr;
+    }
+
+    .m-stamp {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,261 @@
+---
+// Hero — the cover page of the consignment dossier (Form No. QH/01).
+// Document-led: the claim, the house register strip, one certified plate
+// with the stamp. No hero 3D — that budget moved to the evidence layer.
+import Stamp from './Stamp.astro';
+
+const meta = [
+  { k: 'Beginning', v: '1967 · Port Sudan' },
+  { k: 'Today', v: 'Sudan & Egypt' },
+  { k: 'Focus', v: 'Gum arabic, cotton, seeds' },
+  { k: 'Approach', v: 'Source · inspect · document' },
+];
+---
+<section class="section cover-page" id="intro">
+  <div class="container">
+    <!-- Form header strip -->
+    <div class="form-head mono" data-hero-fade>
+      <span>Form No. QH/01 · Consignment introduction</span>
+      <span class="form-head-right">Rev. 2026</span>
+    </div>
+
+    <div class="cover-grid">
+      <div class="cover-copy">
+        <p class="eyebrow label" data-hero-fade>
+          Consigned by the house · Est. 1967 · Port Sudan
+        </p>
+        <h1 class="display-1">
+          <span class="line" data-hero-line><span>From Sudan</span></span>
+          <span class="line" data-hero-line><span>to the world<em>.</em></span></span>
+        </h1>
+        <p class="lead cover-lede" data-hero-fade>
+          Quality House connects Sudan’s agricultural potential with
+          international markets through responsible sourcing, quality
+          assurance, product inspection and disciplined export execution.
+        </p>
+
+        <div class="cover-actions" data-hero-fade>
+          <a class="btn btn--ink" href="#products">Explore the portfolio</a>
+          <a class="btn" href="#contact">Start an enquiry</a>
+        </div>
+      </div>
+
+      <div class="cover-sheet" data-hero-fade>
+        <figure class="plate">
+          <div class="duotone duotone--warm plate-img">
+            <img
+              src="/assets/images/gum-arabic-bwtbqnqd.webp"
+              alt="Raw gum arabic tears from Acacia Senegal"
+              width="1200"
+              height="900"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+          <figcaption class="label">Fig. 01 — Raw gum arabic · Acacia Senegal · Sudan</figcaption>
+        </figure>
+        <div class="plate-verify mono">
+          <span class="verified">VERIFIED AT ORIGIN</span>
+          <span>Prepared by the house · 58 years in the trade</span>
+        </div>
+        <div class="cover-stamp" data-stamp>
+          <Stamp size="6rem" />
+        </div>
+      </div>
+    </div>
+
+    <!-- The house register strip -->
+    <dl class="house-reg mono" data-hero-fade>
+      {meta.map((m) => (
+        <div class="reg-item">
+          <dt class="reg-k">{m.k}</dt>
+          <dd class="reg-v">{m.v}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .cover-page {
+    padding-block-start: calc(var(--qh-header-h) + var(--qh-s12));
+    padding-block-end: var(--qh-s16);
+    min-block-size: 92vh;
+    display: grid;
+    align-content: start;
+  }
+
+  .mono {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--qh-s4);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-block-end: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s12);
+  }
+
+  .cover-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: calc(var(--qh-s16) + var(--qh-s4));
+    align-items: start;
+  }
+
+  .cover-copy {
+    display: grid;
+    gap: var(--qh-s8);
+    justify-items: start;
+    max-inline-size: var(--qh-measure);
+  }
+
+  .eyebrow {
+    color: var(--qh-bronze-deep);
+  }
+
+  h1 {
+    line-height: 0.98;
+  }
+
+  h1 .line {
+    display: block;
+    overflow: clip;
+    padding-block-end: 0.06em;
+  }
+
+  h1 .line > span {
+    display: inline-block;
+    will-change: transform;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--qh-bronze-deep);
+  }
+
+  .cover-lede {
+    max-inline-size: var(--qh-measure-tight);
+  }
+
+  .cover-actions {
+    display: flex;
+    gap: var(--qh-s4);
+    flex-wrap: wrap;
+  }
+
+  /* --- The certified plate --------------------------------------------------- */
+  .cover-sheet {
+    position: relative;
+  }
+
+  .plate {
+    background: var(--qh-surface);
+    border: 1px solid var(--qh-line);
+    box-shadow: var(--qh-shadow-sheet);
+  }
+
+  .plate-img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .plate figcaption {
+    padding: var(--qh-s3) var(--qh-s4);
+    border-block-start: 1px solid var(--qh-line);
+  }
+
+  .plate-verify {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--qh-s3);
+    padding: var(--qh-s3) 0;
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: var(--qh-text-xs);
+  }
+
+  .plate-verify .verified {
+    border-block-end: none;
+  }
+
+  .cover-stamp {
+    position: absolute;
+    inset-block-end: 3.5rem;
+    inset-inline-end: -1.5rem;
+  }
+
+  /* --- House register strip ---------------------------------------------------- */
+  .house-reg {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-block: 1px solid var(--qh-line-strong);
+    margin-block-start: var(--qh-s12);
+  }
+
+  .reg-item {
+    display: grid;
+    gap: var(--qh-s1);
+    padding: var(--qh-s4) var(--qh-s4) var(--qh-s4) 0;
+  }
+
+  .reg-item + .reg-item {
+    border-inline-start: 1px solid var(--qh-line);
+    padding-inline-start: var(--qh-s4);
+  }
+
+  .reg-k {
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: var(--qh-text-xs);
+  }
+
+  .reg-v {
+    color: var(--qh-ink);
+    font-size: var(--qh-text-sm);
+  }
+
+  /* --- Responsive ----------------------------------------------------------------- */
+  @media (max-width: 980px) {
+    .cover-page {
+      min-block-size: 0;
+    }
+
+    .cover-grid {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s12);
+    }
+
+    .cover-sheet {
+      max-inline-size: 34rem;
+    }
+
+    .cover-stamp {
+      inset-inline-end: 0.5rem;
+      inset-block-end: 1.5rem;
+    }
+
+    .house-reg {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-block: 1px solid var(--qh-line-strong);
+    }
+
+    .reg-item:nth-child(3) {
+      border-inline-start: none;
+      padding-inline-start: 0;
+      border-block-start: 1px solid var(--qh-line);
+    }
+
+    .reg-item:nth-child(4) {
+      border-block-start: 1px solid var(--qh-line);
+    }
+  }
+</style>

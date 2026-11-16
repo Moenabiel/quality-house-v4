@@ -1,0 +1,311 @@
+---
+// Journey — Form No. QH/04, the chain-of-custody record. The four real
+// stages as control rows (STEP · CONTROL · RECORD), destinations as an
+// indicative register, the network as named lists. The rotating globe is
+// retired with the hero scene: the WebGL budget moved to evidence.
+// Destinations are indicative lanes only (real disclaimer retained).
+---
+<section class="section section--deck" id="journey">
+  <div class="container">
+    <div class="form-head mono" data-reveal>
+      <span>Form No. QH/04 · Chain of custody</span>
+      <span class="form-head-right">From origin to destination</span>
+    </div>
+
+    <header class="journey-head">
+      <h2 class="display-2" data-reveal>The journey your cargo takes.</h2>
+      <p class="lead" data-reveal>
+        From sourcing in Sudan to delivery at your destination port: every
+        stage is inspected, documented and traceable.
+      </p>
+    </header>
+
+    <!-- The control record -->
+    <ol class="custody" role="list">
+      {[
+        {
+          no: '01',
+          title: 'Source',
+          copy: 'Gum arabic, cotton and seeds sourced from Sudanese producers and inspected at origin.',
+          control: 'Inspection · sampling at origin',
+          record: 'Inspection record, origin',
+        },
+        {
+          no: '02',
+          title: 'Load',
+          copy: 'Cargo is loaded at Port Sudan under superintending, sampling and reweighing controls.',
+          control: 'Superintending · sampling · reweighing',
+          record: 'Loading certificate',
+        },
+        {
+          no: '03',
+          title: 'Transit',
+          copy: 'Sea freight to Gulf, Egyptian and European destination ports with documentation travelling with the shipment.',
+          control: 'Documents travel with the shipment',
+          record: 'Shipping documents set',
+        },
+        {
+          no: '04',
+          title: 'Deliver',
+          copy: 'Delivery at destination port with full traceability: what was inspected is what arrives.',
+          control: 'Traceability preserved end to end',
+          record: 'Delivery record, destination',
+        },
+      ].map((s) => (
+        <li class="custody-row" data-step data-reveal>
+          <div class="cr-no">
+            <span class="mono">STEP</span>
+            <span class="cr-no-v">{s.no}</span>
+          </div>
+          <div class="cr-main">
+            <h3 class="display-3">{s.title}</h3>
+            <p>{s.copy}</p>
+          </div>
+          <dl class="cr-meta mono">
+            <div>
+              <dt class="label">Control</dt>
+              <dd>{s.control}</dd>
+            </div>
+            <div>
+              <dt class="label">Record</dt>
+              <dd>{s.record}</dd>
+            </div>
+          </dl>
+        </li>
+      ))}
+    </ol>
+
+    <!-- Destinations: indicative lanes, honestly labelled -->
+    <div class="dest">
+      <header class="dest-head">
+        <h3 class="display-3" data-reveal>Where Sudan’s exports go.</h3>
+        <p class="lead" data-reveal>
+          Key export markets for Sudanese gum arabic, cotton and seeds.
+        </p>
+      </header>
+
+      <div class="dest-grid">
+        <figure class="dest-media" data-reveal-media>
+          <div class="duotone">
+            <img
+              src="/assets/images/port-b6dcaqel.webp"
+              alt="Port Sudan, container terminal on the Red Sea coast"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <figcaption class="label">Fig. 06 — Port Sudan · origin</figcaption>
+        </figure>
+
+        <div class="dest-reg" data-reveal>
+          <ul role="list" class="dest-list mono">
+            <li>
+              <span class="dl-k label">Origin</span>
+              <span class="dl-v dl-v--o">Port Sudan</span>
+              <span class="dl-note">Red Sea coast — loading terminal</span>
+            </li>
+            <li>
+              <span class="dl-k label">Destination</span>
+              <span class="dl-v">Gulf states</span>
+              <span class="dl-note">Indicative trade lane</span>
+            </li>
+            <li>
+              <span class="dl-k label">Destination</span>
+              <span class="dl-v">Egypt</span>
+              <span class="dl-note">Indicative trade lane</span>
+            </li>
+            <li>
+              <span class="dl-k label">Destination</span>
+              <span class="dl-v">Europe</span>
+              <span class="dl-note">Indicative trade lane</span>
+            </li>
+          </ul>
+          <p class="dest-note mono">
+            Routes shown are indicative trade lanes, not specific shipments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mono {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--qh-s4);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-block-end: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s12);
+  }
+
+  .journey-head {
+    max-inline-size: var(--qh-measure);
+    display: grid;
+    gap: var(--qh-s6);
+    margin-block-end: var(--qh-s16);
+  }
+
+  /* --- The custody register ------------------------------------------------ */
+  .custody {
+    display: grid;
+    border-block: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s24);
+  }
+
+  .custody-row {
+    display: grid;
+    grid-template-columns: minmax(4rem, auto) minmax(0, 5fr) minmax(0, 4fr);
+    gap: var(--qh-s8);
+    align-items: start;
+    padding-block: var(--qh-s10);
+    border-inline-start: 3px solid transparent;
+    transition:
+      border-color var(--qh-dur-fast) var(--qh-ease-press),
+      background-color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .custody-row + .custody-row {
+    border-block-start: 1px solid var(--qh-line);
+  }
+
+  .custody-row.is-active {
+    border-inline-start: 3px solid var(--qh-bronze);
+    background: var(--qh-surface);
+  }
+
+  .cr-no {
+    display: grid;
+    gap: var(--qh-s1);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .cr-no-v {
+    font-family: var(--qh-font-serif, var(--qh-font-display));
+    font-size: var(--qh-display-3);
+    color: var(--qh-bronze-deep);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .cr-main h3 {
+    margin-block-end: var(--qh-s2);
+  }
+
+  .cr-main p {
+    color: var(--qh-ink-2);
+    max-inline-size: 48ch;
+    text-wrap: pretty;
+  }
+
+  .cr-meta {
+    display: grid;
+    gap: var(--qh-s4);
+    align-content: start;
+  }
+
+  .cr-meta div {
+    display: grid;
+    gap: 2px;
+  }
+
+  .cr-meta dd {
+    color: var(--qh-ink);
+  }
+
+  /* --- Destinations ---------------------------------------------------------- */
+  .dest-head {
+    display: grid;
+    gap: var(--qh-s4);
+    max-inline-size: var(--qh-measure);
+    margin-block-end: var(--qh-s12);
+  }
+
+  .dest-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: calc(var(--qh-s12) + var(--qh-s4));
+    align-items: start;
+  }
+
+  .dest-media {
+    border: 1px solid var(--qh-line);
+    background: var(--qh-surface);
+  }
+
+  /* The port photo's lower quay flats to a dark base in the duotone — the
+     plate window is widened and anchored to the crane line, which crops the
+     dark base out of view entirely. */
+  .dest-media .duotone {
+    aspect-ratio: 8 / 5;
+  }
+
+  .dest-media .duotone img {
+    object-position: center top;
+  }
+
+  .dest-media figcaption {
+    padding: var(--qh-s3) var(--qh-s4);
+    border-block-start: 1px solid var(--qh-line);
+  }
+
+  .dest-list {
+    display: grid;
+  }
+
+  .dest-list li {
+    display: grid;
+    grid-template-columns: minmax(5.5rem, auto) minmax(0, 1fr);
+    gap: var(--qh-s2) var(--qh-s4);
+    align-items: baseline;
+    padding-block: var(--qh-s4);
+    border-block-end: 1px solid var(--qh-line);
+  }
+
+  .dest-list li:first-child {
+    border-block-start: 1px solid var(--qh-line-strong);
+  }
+
+  .dl-v {
+    font-size: var(--qh-text-lg);
+  }
+
+  .dl-v--o {
+    color: var(--qh-bronze-deep);
+  }
+
+  .dl-note {
+    grid-column: 2;
+    color: var(--qh-ink-mute);
+  }
+
+  .dest-note {
+    margin-block-start: var(--qh-s4);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 980px) {
+    .custody-row {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s5);
+      padding-inline-start: var(--qh-s5);
+    }
+
+    .dest-grid {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s10);
+    }
+  }
+</style>

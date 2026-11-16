@@ -1,0 +1,254 @@
+---
+// Products — Form No. QH/03, the produce register. Three goods, one
+// consistent row anatomy (the v3 uneven image hierarchy is retired: every
+// row carries the same index, plate, name, meta, claim and specimen cells).
+// All copy real (CONTENT-SOURCE.md); rows link to the dossier pages
+// (/products/<slug>) built from src/pages/products/[slug].astro.
+import Arrow from './Arrow.astro';
+
+const products = [
+  {
+    no: '01',
+    fig: 'Fig. 03',
+    name: 'Gum arabic',
+    meta: 'Flagship · Acacia Senegal & Acacia Seyal',
+    copy:
+      'Raw, kibbled and mechanically processed gum arabic from Acacia Senegal and Acacia Seyal, with quality control and traceability from the tree to the buyer.',
+    href: '/products/gum-arabic',
+    linkText: 'Open the gum arabic dossier',
+    img: '/assets/images/gum-arabic-bwtbqnqd.webp',
+    alt: 'Raw gum arabic tears from Acacia Senegal',
+    crop: '50% 100%',
+    cells: [
+      { k: 'Species', v: 'Acacia Senegal · Acacia Seyal' },
+      { k: 'State', v: 'Raw · kibbled · processed' },
+    ],
+  },
+  {
+    no: '02',
+    fig: 'Fig. 04',
+    name: 'Cotton',
+    meta: 'Origin · Sudan',
+    copy:
+      'Superintending, sampling, reweighing, classing, testing, inspection, trading and export of Sudanese cotton, the full chain under one house.',
+    href: '/products/cotton',
+    linkText: 'Open the cotton dossier',
+    img: '/assets/images/cotton-field.webp',
+    alt: 'Cotton field in Sudan',
+    cells: [
+      { k: 'Chain', v: 'Field → classing → export' },
+      { k: 'Control', v: 'Documented at every stage' },
+    ],
+  },
+  {
+    no: '03',
+    fig: 'Fig. 05',
+    name: 'Seeds',
+    meta: 'Improved & hybrid · Sudan',
+    copy:
+      'Improved and hybrid seeds, producer access to technical knowledge, and support for agricultural productivity.',
+    href: '/products/seeds',
+    linkText: 'Open the seeds dossier',
+    img: '/assets/images/seeds-mix.webp',
+    alt: 'Improved and hybrid seed varieties',
+    cells: [
+      { k: 'Type', v: 'Improved · hybrid' },
+      { k: 'Reach', v: 'Producers + technical knowledge' },
+    ],
+  },
+];
+---
+<section class="section" id="products">
+  <div class="container">
+    <div class="form-head mono" data-reveal>
+      <span>Form No. QH/03 · Produce register</span>
+      <span class="form-head-right">Goods under consignment</span>
+    </div>
+
+    <header class="products-head">
+      <h2 class="display-2" data-reveal>Products that carry Sudan’s name.</h2>
+      <p class="lead" data-reveal>
+        Gum arabic is our strategic flagship product, supported by
+        long-standing work in cotton and in improved and hybrid seeds.
+      </p>
+    </header>
+
+    <ol class="produce-list" role="list">
+      {products.map((p) => (
+        <li class="produce-row" data-reveal>
+          <div class="pr-head">
+            <span class="pr-no mono">{p.no}</span>
+            <a class="pr-name" href={p.href}>{p.name}</a>
+            <span class="pr-meta mono">{p.meta}</span>
+          </div>
+
+          <div class="pr-body">
+            <a class="pr-plate" href={p.href} tabindex="-1" aria-hidden="true">
+              <span class="duotone">
+                <img
+                  src={p.img}
+                  alt={p.alt}
+                  style={p.crop ? `object-position: ${p.crop}` : undefined}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+            </a>
+            <div class="pr-claim">
+              <p class="pr-desc">{p.copy}</p>
+              <dl class="pr-cells mono">
+                {p.cells.map((c) => (
+                  <div>
+                    <dt class="label">{c.k}</dt>
+                    <dd>{c.v}</dd>
+                  </div>
+                ))}
+              </dl>
+              <a class="text-link" href={p.href}>{p.linkText} <Arrow /></a>
+              <span class="pr-fig label">{p.fig} — {p.name.toLowerCase()} · Sudan</span>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .mono {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--qh-s4);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-block-end: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s12);
+  }
+
+  .products-head {
+    display: grid;
+    gap: var(--qh-s6);
+    max-inline-size: var(--qh-measure);
+    margin-block-end: var(--qh-s16);
+  }
+
+  /* --- The register: one anatomy for all three rows -------------------------- */
+  .produce-list {
+    display: grid;
+  }
+
+  .produce-row {
+    padding-block: var(--qh-s12);
+    border-block-start: 1px solid var(--qh-line-strong);
+  }
+
+  .produce-row:last-child {
+    border-block-end: 1px solid var(--qh-line-strong);
+  }
+
+  .pr-head {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: baseline;
+    gap: var(--qh-s5);
+    margin-block-end: var(--qh-s6);
+  }
+
+  .pr-no {
+    color: var(--qh-bronze-deep);
+    font-size: var(--qh-text-sm);
+  }
+
+  .pr-name {
+    font-family: var(--qh-font-serif, var(--qh-font-display));
+    font-size: var(--qh-display-3);
+    font-weight: 500;
+    color: var(--qh-ink);
+    text-decoration: none;
+    letter-spacing: var(--qh-track-display);
+    transition: color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .pr-name:hover {
+    color: var(--qh-bronze-deep);
+  }
+
+  .pr-meta {
+    justify-self: end;
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .pr-body {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: calc(var(--qh-s12) + var(--qh-s2));
+    align-items: start;
+  }
+
+  .pr-plate {
+    display: block;
+    border: 1px solid var(--qh-line);
+    background: var(--qh-surface);
+  }
+
+  .pr-plate .duotone {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pr-claim {
+    display: grid;
+    gap: var(--qh-s5);
+    justify-items: start;
+    align-content: start;
+    max-inline-size: var(--qh-measure);
+  }
+
+  .pr-desc {
+    color: var(--qh-ink-2);
+    max-inline-size: 56ch;
+    text-wrap: pretty;
+  }
+
+  .pr-cells {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--qh-s4) var(--qh-s8);
+    width: 100%;
+    padding-block: var(--qh-s3);
+    border-block: 1px solid var(--qh-line);
+  }
+
+  .pr-cells dd {
+    color: var(--qh-ink);
+  }
+
+  .pr-fig {
+    color: var(--qh-ink-mute);
+  }
+
+  @media (max-width: 980px) {
+    .pr-body {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s8);
+    }
+
+    .pr-head {
+      grid-template-columns: auto auto 1fr;
+    }
+
+    .pr-meta {
+      justify-self: end;
+      text-align: end;
+    }
+  }
+</style>

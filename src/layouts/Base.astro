@@ -1,0 +1,74 @@
+---
+// Base layout — Quality House v4, The Consignment Dossier. Shared <head>,
+// fonts (IBM Plex family + Noto Naskh Arabic, all OFL @fontsource), a11y shell.
+import '@fontsource/ibm-plex-serif/400.css';
+import '@fontsource/ibm-plex-serif/500.css';
+import '@fontsource/ibm-plex-serif/600.css';
+import '@fontsource/ibm-plex-serif/400-italic.css';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/noto-naskh-arabic/400.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Interlude from '../components/Interlude.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" transition:animate="none" data-page="home">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" href="/qh-mark.png" />
+    <link rel="canonical" href="https://qualityhouseintl.com/" />
+    <ClientRouter />
+    <!-- js contract: this early script only adds the .js hook and the
+         motion-failed failsafe. Nothing is ever hidden by CSS without .js,
+         and if the motion boot never reports ready, every hidden state is
+         force-revealed by the .motion-failed overrides. -->
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      window.setTimeout(function () {
+        if (!window.__qhMotionReady) {
+          document.documentElement.classList.add('motion-failed');
+        }
+      }, 1800);
+    </script>
+  </head>
+  <body>
+    <Interlude />
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <style is:global>
+      /* Hallmark 34: overflow-x clip on html AND body. */
+      html,
+      body {
+        overflow-x: clip;
+      }
+      /* Interlude transition cover color */
+      :root {
+        --interlude-color: var(--qh-green);
+      }
+    </style>
+    <script>
+      import '../scripts/motion';
+      // Re-init motion on every client-side navigation (Interlude fires astro:page-load)
+      document.addEventListener('astro:page-load', () => {
+        if (window.__qhMotionCleanup) window.__qhMotionCleanup();
+        if (window.__qhMotionBoot) window.__qhMotionBoot();
+      });
+    </script>
+  </body>
+</html>

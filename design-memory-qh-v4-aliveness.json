@@ -1,0 +1,23 @@
+{
+  "id": "qh-v4-aliveness-20261103",
+  "timestamp": "2026-11-03T02:09:08.646Z",
+  "project": "quality-house-v4",
+  "category": "motion",
+  "facts": [
+    "P1-P4 aliveness map implemented: grain/drift/develop-in/form-states/native-VT (P1), velocity skew+ticker+SplitText (P2), magnetic+cursor+stamp-reink (P3), Interlude peel/tear/typewriter (P4)",
+    "All tokens in tokens.css; check:tokens PASS",
+    "Gates: build PASS, axe 0×5, console 0E/0W×4, resilience PASS",
+    "Interlude (MIT) wired with ClientRouter; three.js lazy for WebGL transitions",
+    "SplitText free since GSAP 3.13, a11y-safe; product h1 now line-masked",
+    "Lenis velocity powers skew ±2deg clamp; ticker mono strip honest content"
+  ],
+  "confidence": 0.95,
+  "tags": [
+    "quality-house-v4",
+    "motion",
+    "aliveness",
+    "interlude",
+    "gsap",
+    "lenis"
+  ]
+}

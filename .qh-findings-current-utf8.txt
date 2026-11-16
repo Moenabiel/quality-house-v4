@@ -1,0 +1,231 @@
+﻿---
+{
+ "gate": "40",
+ "grade": "FAIL",
+ "tier": "floor",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1280px] contrast 4.45:1 against the pixels behind < 4.5:1 on cite.label \"Quality House\"",
+ "fix": "Raise the contrast to threshold"
+}
+---
+{
+ "gate": "40",
+ "grade": "FAIL",
+ "tier": "floor",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1280px] contrast 4.45:1 against the pixels behind < 4.5:1 on a.text-link \"qualityhouseintl.com/org\"",
+ "fix": "Raise the contrast to threshold"
+}
+---
+{
+ "gate": "40",
+ "grade": "FAIL",
+ "tier": "floor",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1440px] a field's edge is under 3:1 against what surrounds it: input 1.82:1, input 1.82:1, input 1.82:1",
+ "fix": "Draw the field in --color-muted, or fill it a step off the surface it sits on"
+}
+---
+{
+ "gate": "44b",
+ "grade": "FAIL",
+ "tier": "floor",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1280px] primary CTA below the 1280x800 fold (bottom 826px)",
+ "fix": "Trim hero padding so the CTA fits the fold"
+}
+---
+{
+ "gate": "54",
+ "grade": "FAIL",
+ "tier": "floor",
+ "file": "src\\components\\ProductHero.astro",
+ "line": 23,
+ "evidence": "eyebrow \"{product.eyebrow}\" before <h1>",
+ "fix": "Cut it; the heading already says this (craft.md Ôö¼┬║ 7 has twelve other openings)"
+}
+---
+{
+ "gate": "58",
+ "grade": "FAIL",
+ "tier": "floor",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1440px] 121 words on one screen (from y=12850)",
+ "fix": "One idea per screen: cut to about 80 words, make the section an object"
+}
+---
+{
+ "gate": "39b",
+ "grade": "REFLEX",
+ "tier": "reflex",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1440px] control height outside 44 to 52px: button.crop-step 31px, button.crop-step 31px, button.crop-step 31px",
+ "fix": "Marketing controls stand 44 to 52px; app UI 32 to 40px with a 44px hit target"
+}
+---
+{
+ "gate": "44c",
+ "grade": "REFLEX",
+ "tier": "reflex",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1440px] hero ends at 638px of a 900px screen",
+ "fix": "Fill the first screen with the visual or the headline, not with copy"
+}
+---
+{
+ "gate": "49b",
+ "grade": "REFLEX",
+ "tier": "reflex",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[320px] link \"Sudanese Center for Quality Assu\" wraps to 2 lines (a)",
+ "fix": "Shorten the label or set nowrap"
+}
+---
+{
+ "gate": "49b",
+ "grade": "REFLEX",
+ "tier": "reflex",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[320px] link \"Sudanese German Center for Quali\" wraps to 2 lines (a)",
+ "fix": "Shorten the label or set nowrap"
+}
+---
+{
+ "gate": "49b",
+ "grade": "REFLEX",
+ "tier": "reflex",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1280px] link \"Awlad Ibrahim Flour Mills Co. Lt\" wraps to 2 lines (a)",
+ "fix": "Shorten the label or set nowrap"
+}
+---
+{
+ "gate": "79",
+ "grade": "REFLEX",
+ "tier": "reflex",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1440px] 262px of nothing between the hero's last content (y 638) and the fold",
+ "fix": "Centre the content in the screen and grow the visual or the head (layout.md Ôö¼┬║ 6); never fill it with copy"
+}
+---
+{
+ "gate": "28a",
+ "grade": "WARN",
+ "tier": "floor",
+ "file": "src\\components\\Footer.astro",
+ "line": 10,
+ "evidence": "lazy-loaded first image (likely LCP)",
+ "fix": "fetchpriority=high on the LCP element"
+}
+---
+{
+ "gate": "28a",
+ "grade": "WARN",
+ "tier": "floor",
+ "file": "src\\components\\Group.astro",
+ "line": 64,
+ "evidence": "lazy-loaded first image (likely LCP)",
+ "fix": "fetchpriority=high on the LCP element"
+}
+---
+{
+ "gate": "28a",
+ "grade": "WARN",
+ "tier": "floor",
+ "file": "src\\components\\Journey.astro",
+ "line": 95,
+ "evidence": "lazy-loaded first image (likely LCP)",
+ "fix": "fetchpriority=high on the LCP element"
+}
+---
+{
+ "gate": "28a",
+ "grade": "WARN",
+ "tier": "floor",
+ "file": "src\\components\\Products.astro",
+ "line": 63,
+ "evidence": "lazy-loaded first image (likely LCP)",
+ "fix": "fetchpriority=high on the LCP element"
+}
+---
+{
+ "gate": "28a",
+ "grade": "WARN",
+ "tier": "floor",
+ "file": "src\\components\\Quality.astro",
+ "line": 42,
+ "evidence": "lazy-loaded first image (likely LCP)",
+ "fix": "fetchpriority=high on the LCP element"
+}
+---
+{
+ "gate": "28a",
+ "grade": "WARN",
+ "tier": "floor",
+ "file": "src\\components\\RootsSection.astro",
+ "line": 187,
+ "evidence": "lazy-loaded first image (likely LCP)",
+ "fix": "fetchpriority=high on the LCP element"
+}
+---
+{
+ "gate": "28a",
+ "grade": "WARN",
+ "tier": "floor",
+ "file": "src\\components\\Statement.astro",
+ "line": 27,
+ "evidence": "lazy-loaded first image (likely LCP)",
+ "fix": "fetchpriority=high on the LCP element"
+}
+---
+{
+ "gate": "42",
+ "grade": "WARN",
+ "tier": "reflex",
+ "file": "src\\components\\Footer.astro",
+ "line": 5,
+ "evidence": "default footer shape: 4 equal columns of links",
+ "fix": "Decide the footer and name it in the stamp, or build another shape"
+}
+---
+{
+ "gate": "58",
+ "grade": "WARN",
+ "tier": "floor",
+ "file": "src\\components\\Hero.astro",
+ "line": 17,
+ "evidence": "h1 runs 9 words (\"From Sudan to the world. Quality you ca├ö├ç┬¬\")",
+ "fix": "Seven words or fewer, 50 characters or fewer"
+}
+---
+{
+ "gate": "58",
+ "grade": "WARN",
+ "tier": "floor",
+ "file": "src\\components\\Hero.astro",
+ "line": 23,
+ "evidence": "hero paragraph runs 20 words",
+ "fix": "One sentence, twelve words or fewer"
+}
+---
+{
+ "gate": "59",
+ "grade": "WARN",
+ "tier": "reflex",
+ "file": "http://127.0.0.1:4322/",
+ "line": 1,
+ "evidence": "[1440px] 10 sections",
+ "fix": "Six to nine sections a page, hero and footer included; merge or cut"
+}
+

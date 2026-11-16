@@ -1,0 +1,701 @@
+/* Quality House v4 - GLOBAL BASE
+   Direction: THE CONSIGNMENT DOSSIER. Document primitives; component-specific
+   styles live scoped inside each Astro component and use tokens exclusively. */
+
+/* --- Reset (lite) ------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;                      /* no-JS graceful anchor scroll */
+  scroll-padding-top: calc(var(--qh-header-h) + var(--qh-s4));
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+  font-synthesis: none;
+  scrollbar-color: var(--qh-paper-2) var(--qh-paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--qh-paper);
+  color: var(--qh-ink);
+  font-family: var(--qh-font-body);
+  font-size: var(--qh-text);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-variant-numeric: tabular-nums;
+  overflow-x: clip;
+  font-synthesis: none;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Arrow glyphs inside inline text links must stay on the link's line
+   (the block default above would force them onto their own line). */
+.btn-arrow svg {
+  display: inline-block;
+  vertical-align: -0.1em;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+/* --- Type primitives ----------------------------------------------------- */
+h1,
+h2,
+h3,
+.display {
+  font-family: var(--qh-font-display);
+  font-weight: 500;
+  font-variation-settings: normal;
+  letter-spacing: var(--qh-track-display);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.display-1 { font-size: var(--qh-display-1); }
+.display-2 { font-size: var(--qh-display-2); }
+.display-3 { font-size: var(--qh-display-3); }
+
+.lead {
+  font-size: var(--qh-text-lg);
+  line-height: 1.65;
+  color: var(--qh-ink-2);
+  text-wrap: pretty;
+}
+
+/* Mono voice: the print/data voice of the dossier — labels, lot codes,
+   sums, timestamps. Always tabular. */
+.mono {
+  font-family: var(--qh-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-family: var(--qh-font-mono);
+  font-size: var(--qh-text-xs);
+  font-weight: 500;
+  letter-spacing: var(--qh-track-label);
+  text-transform: uppercase;
+  color: var(--qh-ink-mute);
+}
+
+/* Arabic micro-labels run under EN labels in select spots only. */
+.ar {
+  font-family: var(--qh-font-ar);
+  direction: rtl;
+  letter-spacing: 0;
+}
+
+.bronze { color: var(--qh-bronze-deep); }
+
+.rule {
+  block-size: 1px;
+  border: 0;
+  background: var(--qh-line);
+}
+
+.rule--strong {
+  block-size: 1px;
+  border: 0;
+  background: var(--qh-line-strong);
+}
+
+/* --- Layout primitives ---------------------------------------------------- */
+.container {
+  inline-size: 100%;
+  max-inline-size: var(--qh-container);
+  margin-inline: auto;
+  padding-inline: var(--qh-gutter);
+}
+
+/* A dossier page: the sheet of paper a section's claim lives on. */
+.section {
+  padding-block: var(--qh-section-py);
+  position: relative;
+}
+
+.section--deck { background: var(--qh-paper-2); }
+.section--form { background: var(--qh-surface); }
+
+/* Every form's meta pair is one datum — "Rev. 2026" must never split across
+   lines when the head wraps on narrow sheets. */
+.form-head-right {
+  white-space: nowrap;
+}
+
+.form-sheet {
+  position: relative;
+  background: var(--qh-surface);
+  border: 1px solid var(--qh-line);
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+}
+
+/* Crop-mark corners: the print proofing signature of the dossier. */
+.form-sheet::before,
+.form-sheet::after {
+  content: '';
+  position: absolute;
+  inline-size: 14px;
+  block-size: 14px;
+  pointer-events: none;
+}
+
+.form-sheet::before {
+  inset-block-start: -1px;
+  inset-inline-start: -1px;
+  border-block-start: 2px solid var(--qh-ink);
+  border-inline-start: 2px solid var(--qh-ink);
+}
+
+.form-sheet::after {
+  inset-block-end: -1px;
+  inset-inline-end: -1px;
+  border-block-end: 2px solid var(--qh-ink);
+  border-inline-end: 2px solid var(--qh-ink);
+}
+
+/* --- Full-bleed chapter bands (Acacia Green) ------------------------------- */
+.band {
+  background: var(--qh-green);
+  color: var(--qh-on-green);
+  min-block-size: var(--qh-band-min);
+}
+
+.band .label { color: var(--qh-line-inverse); }
+
+/* --- Duotone photography ---------------------------------------------------
+   The asset-layer grade: every photo is graded green→paper in CSS;
+   source files stay untouched. The old cool-sky clash cannot recur
+   because saturation is destroyed before tinting. */
+.duotone {
+  position: relative;
+  display: block;                /* anchored: <span class="duotone"> must not
+                                    stay inline — inline boxes cannot carry the
+                                    blend isolation (rendered neutral gray). */
+  isolation: isolate;
+  overflow: clip;
+  background: var(--qh-duo-dark);
+}
+
+.duotone img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: var(--qh-grade-filter);
+  mix-blend-mode: screen;
+}
+
+/* Highlight lift: paper rides the grayscale highlights, darks stay green. */
+.duotone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--qh-duo-light);
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+/* Warm variant for hero plates: bronze shadows, same paper highlights. */
+.duotone--warm {
+  background: var(--qh-duo-warm-dark);
+}
+
+/* --- The stamp — bronze means verified ------------------------------------- */
+.stamp {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  inline-size: 7.5rem;
+  block-size: 7.5rem;
+  color: var(--qh-bronze-deep);
+  mix-blend-mode: multiply;      /* ink pressed into the sheet — text and
+                                    grain show through the seal */
+  transform: rotate(-7deg);
+  user-select: none;
+  pointer-events: none;
+}
+
+.stamp svg {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+/* On deep green surfaces the multiply ink disappears — the footer prints
+   its seal as an opaque on-green mark instead. */
+.stamp--on-green {
+  mix-blend-mode: normal;
+}
+
+/* Ink bleed: a hair of blur and roughness — print evidence, not gloss. */
+.stamp svg path,
+.stamp svg circle,
+.stamp svg text {
+  vector-effect: non-scaling-stroke;
+}
+
+.stamp--bleed {
+  filter: blur(0.2px) contrast(1.04);
+}
+
+/* --- Evidence states --------------------------------------------------------- */
+.awaiting {
+  border: 1px dashed var(--qh-line-strong);
+  padding: var(--qh-s4) var(--qh-s5);
+  font-family: var(--qh-font-mono);
+  font-size: var(--qh-text-xs);
+  color: var(--qh-ink-mute);
+  letter-spacing: 0.02em;
+}
+
+.verified {
+  color: var(--qh-bronze-deep);
+}
+
+/* --- Interactive primitives ------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--qh-s2);
+  padding: var(--qh-s3) var(--qh-s6);
+  font-family: var(--qh-font-mono);
+  font-size: var(--qh-text-xs);
+  font-weight: 500;
+  letter-spacing: var(--qh-track-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--qh-line-strong);
+  border-radius: var(--qh-r-control);
+  color: var(--qh-ink);
+  background: transparent;
+  transition:
+    background-color var(--qh-dur-fast) var(--qh-ease-press),
+    color var(--qh-dur-fast) var(--qh-ease-press),
+    border-color var(--qh-dur-fast) var(--qh-ease-press),
+    scale var(--qh-dur-fast) var(--qh-ease-stamp);
+}
+
+.btn:active {
+  scale: 0.98;                                   /* stamp-press physics */
+}
+
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-style: dashed;
+  color: var(--qh-ink-mute);
+}
+
+.btn:hover {
+  border-color: var(--qh-bronze-deep);
+  color: var(--qh-bronze-deep);
+}
+
+.btn--bronze {
+  background: var(--qh-bronze);
+  border-color: var(--qh-bronze);
+  color: var(--qh-on-bronze);
+}
+
+.btn--bronze:hover {
+  background: var(--qh-bronze-deep);
+  border-color: var(--qh-bronze-deep);
+  color: var(--qh-on-bronze);
+}
+
+.btn--ink {
+  background: var(--qh-green);
+  border-color: var(--qh-green);
+  color: var(--qh-on-green);
+}
+
+.btn--ink:hover {
+  background: var(--qh-green-lift);
+  border-color: var(--qh-green-lift);
+  color: var(--qh-on-green);
+}
+
+.text-link {
+  color: var(--qh-ink-2);
+  text-decoration: none;
+  padding-bottom: 2px;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--qh-line-strong);
+  transition:
+    color var(--qh-dur-fast) var(--qh-ease-press),
+    border-color var(--qh-dur-fast) var(--qh-ease-press);
+}
+
+.text-link:hover {
+  color: var(--qh-bronze-deep);
+  border-color: var(--qh-bronze-deep);
+}
+
+/* --- Evidence registers: the data tables of the dossier --------------------- */
+.reg {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-family: var(--qh-font-mono);
+  font-size: var(--qh-text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.reg th {
+  font-size: var(--qh-text-xs);
+  font-weight: 500;
+  letter-spacing: var(--qh-track-label);
+  text-transform: uppercase;
+  color: var(--qh-ink-mute);
+  text-align: start;
+  padding: var(--qh-s3) var(--qh-s4);
+  border-block-end: 1px solid var(--qh-line-strong);
+  white-space: nowrap;
+}
+
+.reg td {
+  border-block-end: 1px solid var(--qh-line);
+  padding: var(--qh-s3) var(--qh-s4);
+  vertical-align: top;
+}
+
+.reg tbody tr {
+  transition: background-color var(--qh-dur-fast) var(--qh-ease-press);
+}
+
+.reg tbody tr:hover {
+  background: var(--qh-surface-2);
+  box-shadow: inset 3px 0 0 var(--qh-bronze);    /* bronze left-rule */
+}
+
+/* --- Reference/index list rows (nav, footer, contact sheets) ---------------- */
+.idx {
+  display: grid;
+}
+
+.idx a,
+.idx button {
+  display: flex;
+  align-items: baseline;
+  gap: var(--qh-s3);
+  padding: var(--qh-s2) 0;
+  border-block-end: 1px solid var(--qh-line);
+  text-decoration: none;
+  transition: color var(--qh-dur-fast) var(--qh-ease-press);
+}
+
+.idx a:hover,
+.idx button:hover {
+  color: var(--qh-bronze-deep);
+  box-shadow: inset 3px 0 0 var(--qh-bronze);
+}
+
+/* --- Focus visibility (never suppressed) ------------------------------------ */
+:focus-visible {
+  outline: var(--qh-focus-ring);
+  outline-offset: var(--qh-focus-offset);
+}
+
+/* --- Selection ---------------------------------------------------------------- */
+::selection {
+  background: var(--qh-bronze);
+  color: var(--qh-on-bronze);
+}
+
+/* --- Skip link ------------------------------------------------------------------ */
+.skip-link {
+  position: fixed;
+  inset-block-start: var(--qh-s2);
+  inset-inline-start: var(--qh-s2);
+  z-index: calc(var(--qh-z-nav) + 10);
+  padding: var(--qh-s2) var(--qh-s4);
+  background: var(--qh-green);
+  color: var(--qh-on-green);
+  font-family: var(--qh-font-mono);
+  font-size: var(--qh-text-xs);
+  font-weight: 500;
+  letter-spacing: var(--qh-track-label);
+  text-decoration: none;
+  transform: translateY(calc(-100% - var(--qh-s4)));
+  transition: transform var(--qh-dur-fast) var(--qh-ease-press);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* --- Motion state contract (motion.ts + MOTION v4) --------------------------
+   [data-reveal] starts hidden ONLY when <html> has .js, and is
+   force-revealed by .motion-failed (boot failure) or reduced motion.
+   Hidden state must mirror every gsap.to target in motion.ts exactly.
+   Paper never floats far: small travel, no scale gymnastics.               */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--qh-travel, 48px));
+}
+
+.js [data-reveal-media] {
+  opacity: 0;
+  transform: translateY(24px) scale(1.05);
+}
+
+.js [data-reveal-media] img {
+  transform: translateY(-8%);
+}
+
+html.motion-failed [data-reveal],
+html.motion-failed [data-reveal-media] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+html.motion-failed [data-reveal-media] img {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+[data-reveal-media] {
+  overflow: clip;
+}
+
+.js.is-loading {
+  overflow: clip;
+}
+
+html.is-menu-open {
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal-media] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-reveal-media] img {
+    transform: none !important;
+  }
+
+  .js.is-loading,
+  html.is-menu-open {
+    overflow: visible !important;
+  }
+
+  .duotone img,
+  .duotone::after {
+    filter: none;                                /* grade is static art, but
+       kill any transitioning filter cost on rM devices */
+  }
+}
+
+/* --- P1: Paper breathes (idle/time layer) ----------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Animated paper grain — feTurbulence displacement on stamps & hero */
+  .grain-layer {
+    position: fixed;
+    inset: 0;
+    z-index: var(--qh-z-progress);
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+  }
+
+  /* Hero plate idle drift — slow scale yoyo, paper breathes */
+  .plate-img img {
+    will-change: transform;
+  }
+
+  /* Photo develop-in — duotone arrives over-processed, settles to true grade */
+  .duotone img {
+    filter: var(--qh-grade-filter-from);
+    transition: filter var(--qh-dur-reveal) var(--qh-ease-flip);
+    will-change: filter;
+  }
+  .js .duotone img[data-developed] {
+    filter: var(--qh-grade-filter);
+  }
+}
+
+/* --- P2: Velocity layer (skew + ticker) ------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  @media (pointer: fine) {
+    .pr-plate,
+    .statement-media,
+    .dest-media,
+    .quality-media {
+      will-change: transform;
+      transform-origin: center center;
+    }
+  }
+
+  /* Velocity ticker — one honest strip, direction flips with scroll */
+  .velocity-ticker {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--qh-z-ticker);
+    overflow: hidden;
+    pointer-events: none;
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--qh-bronze-deep);
+    white-space: nowrap;
+  }
+  .velocity-ticker__track {
+    display: inline-flex;
+    will-change: transform;
+  }
+  .velocity-ticker__item {
+    padding: var(--qh-s2) var(--qh-s8);
+  }
+}
+
+/* --- P3: Pointer cluster (magnetic + cursor + stamp re-ink) ---------------- */
+@media (prefers-reduced-motion: no-preference) {
+  @media (pointer: fine) {
+    .btn {
+      will-change: transform;
+    }
+
+    /* Hand-built registration-mark cursor (crop-mark motif) */
+    .qh-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      z-index: var(--qh-z-cursor);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: opacity var(--qh-dur-fast) var(--qh-ease-press);
+    }
+    .qh-cursor__mark {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--qh-bronze);
+      opacity: 0;
+      transform: scale(1.4);
+      transition:
+        transform var(--qh-dur-cursor) var(--qh-ease-skew),
+        opacity var(--qh-dur-fast) var(--qh-ease-press);
+    }
+    .qh-cursor.is-visible .qh-cursor__mark {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stamp re-ink on hover — elastic */
+    [data-stamp] {
+      transition:
+        transform var(--qh-dur-stamp) var(--qh-ease-stamp),
+        filter var(--qh-dur-fast) var(--qh-ease-press);
+    }
+    [data-stamp]:hover,
+    [data-stamp]:focus-visible {
+      transform: scale(1.04) rotate(-4deg) !important;
+      filter: blur(0.4px) contrast(1.06);
+    }
+  }
+}
+
+/* --- Form state motion (P1/P4) --------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .field input:invalid:not(:placeholder-shown),
+  .field select:invalid:not(:placeholder-shown),
+  .field textarea:invalid:not(:placeholder-shown) {
+    animation: qh-shake var(--qh-dur-shake) var(--qh-ease-press) 2;
+  }
+  @keyframes qh-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+  }
+
+  .btn--bronze[data-submitting] {
+    animation: qh-pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes qh-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--qh-bronze); }
+    50% { box-shadow: 0 0 0 6px transparent; }
+  }
+
+  .btn--bronze[data-ready] {
+    animation: none;
+  }
+}
+
+/* --- Native cross-document view transitions (P1) --------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (view-transition-name: auto) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: var(--qh-dur-flip);
+      animation-timing-function: var(--qh-ease-flip);
+    }
+    ::view-transition-old(root) {
+      animation-name: qh-page-out;
+    }
+    ::view-transition-new(root) {
+      animation-name: qh-page-in;
+    }
+    @keyframes qh-page-out {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(0.98) translateY(-8px); }
+    }
+    @keyframes qh-page-in {
+      from { opacity: 0; transform: scale(1.02) translateY(8px); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  }
+}

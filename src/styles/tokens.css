@@ -1,0 +1,203 @@
+/* =========================================================================
+   Quality House v4 — DESIGN TOKENS (single file contract)
+   Direction: THE CONSIGNMENT DOSSIER. Every color, type size, spacing step,
+   radius, duration and ease lives here. Component code may use var(--qh-*)
+   ONLY — no hex literals, no magic numbers. If a value is needed twice,
+   it belongs in this file.
+
+   PALETTE — Ledger White ground carries the document; the two house darks
+   (Bark Ink text, Acacia Green bands) are structure. Port Sudan Bronze is
+   the ONE accent and it means one thing: verified. Any bronze element on
+   screen answers "what proves this?" — if it cannot answer, it is ink.
+
+      ground      →  Ledger White   #f2efe9
+      ground 2    →  Ledger, deck   #eae5da
+      panel       →  Form Ivory     #f7f5ef
+      text        →  Bark Ink       #151c17
+      text soft   →  Ink, second    #3b463f
+      band        →  Acacia Green   #1a3d29
+      band lift   →  Green, lift    #2b5a40
+      accent      →  Port Sudan Bronze #975c20 (stamps + verified only)
+      accent deep →  Bronze, pressed   #7a4a19 (small-text AA duty)
+      error       →  Kiln Red       #b42826
+
+   Names are roles; the name of a token must never outlive the value it
+   describes. House colours on qualityhouseintl.com are retained — v4
+   re-roles them, it does not repaint the brand.
+   ========================================================================= */
+
+:root {
+  /* --- Ground: ledger paper ------------------------------------------------ */
+  --qh-paper: #f2efe9;         /* Ledger White — page ground                 */
+  --qh-paper-2: #eae5da;       /* Ledger, deck — alternate band              */
+  --qh-surface: #f7f5ef;       /* Form Ivory — form pages, panels            */
+  --qh-surface-2: #efeadf;     /* Form Ivory, warm — elevated / hover        */
+  --qh-paper-rgb: 242 239 233;
+  --qh-surface-rgb: 247 245 239;
+
+  /* --- Separation: hairlines do all the work; no shadows for structure ----- */
+  --qh-line: rgba(21 28 23 / 0.14);
+  --qh-line-strong: rgba(21 28 23 / 0.30);
+  --qh-line-soft: rgba(21 28 23 / 0.07);
+  --qh-line-inverse: rgba(250 246 239 / 0.22);
+
+  /* --- Ink ------------------------------------------------------------------- */
+  --qh-ink: #151c17;
+  --qh-ink-rgb: 21 28 23;
+  --qh-ink-2: #3b463f;
+  --qh-ink-mute: #5c655e;      /* labels, "awaiting record" notes            */
+  --qh-on-green: #faf6ef;
+
+  /* --- The one accent: bronze means VERIFIED --------------------------------- */
+  --qh-bronze: #975c20;
+  --qh-bronze-deep: #7a4a19;   /* 12px-label AA duty on paper — verify pair  */
+  --qh-bronze-glow: rgba(151 92 32 / 0.14);
+  --qh-bronze-rgb: 151 92 32;
+  --qh-on-bronze: #fdfaf4;
+
+  /* --- The chapter bands: Acacia Green --------------------------------------- */
+  --qh-green: #1a3d29;
+  --qh-green-lift: #2b5a40;    /* band hover / band interactive              */
+  --qh-green-rgb: 26 61 41;
+
+  /* --- Duotone photography: the asset-layer grade ----------------------------
+     Every photograph is graded green→paper in CSS; source files stay
+     untouched (disk originals are never re-graded). Recipe: grayscale img
+     SCREENed over the duotone dark (shadows take the dark tone; highlights
+     go white), then the light tone multiplies over (highlights take paper).
+     The cool-sky clash cannot recur because saturation never survives.       */
+  --qh-duo-dark: #1a3d29;
+  --qh-duo-light: #f2efe9;
+  --qh-duo-warm-dark: #7a4a19;
+  --qh-duo-warm-light: #f2efe9;
+
+  /* Semantics: the warm family only; state is always carried by text + icon
+     as well as color (WCAG 1.4.1).                                            */
+  --qh-error: #b42826;
+  --qh-error-soft: rgba(180 40 38 / 0.16);
+
+  /* --- Interlude page transitions (copy-in engine, MIT) ----------------------- */
+  --qh-transition-cover: var(--qh-green);      /* peel/tear default cover       */
+  --qh-transition-sheet: #0c0c0c;              /* typewriter sheet              */
+  --qh-transition-text: #ffffff;               /* typewriter text               */
+  --qh-transition-paper: #f6f3ec;              /* tear torn edge                */
+  --qh-transition-shadow: rgba(0 0 0 / 0.35);  /* tear shadow                   */
+  --qh-transition-shadow-strong: rgba(0 0 0 / 0.30); /* tear shadow strong      */
+
+  /* --- Typography -------------------------------------------------------------
+     Display: IBM Plex Serif (OFL) — the ledger voice, roman + italic.
+     Body: IBM Plex Sans (OFL). Data/labels: IBM Plex Mono (OFL), tabular.
+     Arabic micro-labels: Noto Naskh Arabic (OFL), baseline-hung under EN.     */
+  --qh-font-display: 'IBM Plex Serif', 'Iowan Old Style', Georgia, serif;
+  --qh-font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --qh-font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', Menlo, Consolas, monospace;
+  --qh-font-ar: 'Noto Naskh Arabic', 'Amiri', serif;
+
+  /* --- Type scale (7 steps, spiral) -------------------------------------------
+     12.5 / 14 / 16 / 20 / 28 / 40 / 64 — Plex Serif from 28 up;
+     mono 12.5–14, tabular numerals everywhere data appears.                   */
+  --qh-text-xs: 0.7813rem;     /* 12.5  — mono micro-labels                  */
+  --qh-text-sm: 0.875rem;      /* 14    — form field values, mono rows       */
+  --qh-text: 1rem;             /* 16    — body                               */
+  --qh-text-lg: 1.25rem;       /* 20    — ledes                              */
+  --qh-display-3: clamp(1.5625rem, 1.9vw, 1.75rem);   /* 25–28 sub-headlines */
+  --qh-display-2: clamp(2.125rem, 3.6vw, 2.5rem);    /* 34–40 section heads */
+  --qh-display-1: clamp(2.75rem, 6.5vw, 4rem);       /* 44–64 cover lines   */
+
+  --qh-track-display: -0.015em;
+  --qh-track-label: 0.05em;
+  --qh-measure: 62ch;
+  --qh-measure-tight: 44ch;
+
+  /* --- 8pt spacing rhythm ------------------------------------------------------ */
+  --qh-s1: 0.25rem;  --qh-s2: 0.5rem;   --qh-s3: 0.75rem;  --qh-s4: 1rem;
+  --qh-s5: 1.25rem;  --qh-s6: 1.5rem;   --qh-s8: 2rem;     --qh-s10: 2.5rem;
+  --qh-s12: 3rem;    --qh-s16: 4rem;    --qh-s20: 5rem;    --qh-s24: 6rem;
+
+  /* Document gutters: 32 desktop / 20 mobile; section rhythm 96/128.          */
+  --qh-gutter: clamp(1.25rem, 4vw, 2rem);
+  --qh-form-max: 76rem;        /* optical width of a dossier page            */
+  --qh-section-py: clamp(4rem, 9vw, 6rem);
+  --qh-band-min: 7.5rem;
+
+  /* --- Layout ----------------------------------------------------------------- */
+  --qh-container: 90rem;
+  --qh-header-h: 5.25rem;
+  --qh-header-h-mobile: 4.25rem;
+
+  /* --- Radius: documents are sharp; 2px only on interactive fillers ------------ */
+  --qh-r0: 0;
+  --qh-r-control: 2px;
+
+  /* --- Motion contract (v4 § MOTION — stamp-press physics) ----------------------
+     Motion never floats. Snaps are the physics of the paper world.
+     press   160ms cubic-bezier(.2,.9,.25,1)  — buttons, rows
+     flip    480ms expo.out                    — dossier page advance
+     stamp   320ms back.out(2)                 — the stamp lands
+     Everything gated by prefers-reduced-motion → opacity-only cuts.           */
+  --qh-dur-fast: 160ms;
+  --qh-dur-flip: 480ms;
+  --qh-dur-stamp: 320ms;
+  --qh-dur-reveal: 640ms;
+  --qh-dur-panel: 600ms;
+  --qh-dur-ticker: 36s;
+  --qh-dur-skew: 120ms;
+  --qh-dur-shake: 100ms;
+  --qh-dur-cursor: 300ms;
+  --qh-stagger: 60ms;
+
+  --qh-ease-press: cubic-bezier(0.2, 0.9, 0.25, 1);
+  --qh-ease-flip: cubic-bezier(0.19, 1, 0.22, 1);      /* expo.out           */
+  --qh-ease-stamp: cubic-bezier(0.34, 1.8, 0.5, 1);    /* back.out(2) analog */
+  --qh-ease-panel: cubic-bezier(0.83, 0, 0.17, 1);     /* wipes              */
+  --qh-ease-skew: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* elastic.out(1, .3) proxy */
+  --qh-ease-drift: cubic-bezier(0.42, 0, 0.58, 1);      /* sine in-out        */
+
+  /* --- Elevation: reserved for a raised form sheet ONLY; hairlines separate
+     everything else. A shadow must never carry structure.                      */
+  --qh-shadow-sheet: 0 1.5rem 3.5rem rgba(21 28 23 / 0.10);
+
+  /* --- Focus -------------------------------------------------------------------- */
+  --qh-focus-ring: 2px solid var(--qh-bronze);
+  --qh-focus-offset: 2px;
+
+  /* --- Form control edge contrast ------------------------------------------------ */
+  --qh-line-control: rgba(21 28 23 / 0.60);
+
+  /* --- Z scale --------------------------------------------------------------------- */
+  --qh-z-progress: 40;
+  --qh-z-nav: 50;
+  --qh-z-menu: 60;
+  --qh-z-cursor: 70;      /* registration-mark cursor (free slot) */
+  --qh-z-ticker: 35;      /* velocity ticker hairline */
+
+  /* --- Duotone grade filter (CSS-only; JS may call on scratch canvases) ---------- */
+  --qh-grade-filter: grayscale(1) contrast(1.22) brightness(1.06);
+  --qh-grade-filter-from: grayscale(1) contrast(1.55) brightness(0.88); /* over-processed */
+
+  /* --- Skew limits ----------------------------------------------------------------- */
+  --qh-skew-max: 2deg;    /* velocity skew clamp */
+
+  /* --- Scroll choreography --------------------------------------------------------- */
+  --qh-travel: clamp(28px, 4.5vw, 56px);   /* reveal travel — modest, paper never
+      floats far; travel is vertical only by default                          */
+}
+
+/* ==========================================================================
+   Reduced motion: every duration/ease collapses to instant. JS reads
+   matchMedia separately and skips from-states entirely (never sets hidden
+   states). Stamps don't thump; they are simply there.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --qh-dur-fast: 0ms;
+    --qh-dur-flip: 0ms;
+    --qh-dur-stamp: 0ms;
+    --qh-dur-reveal: 0ms;
+    --qh-dur-panel: 0ms;
+    --qh-dur-ticker: 0ms;
+    --qh-dur-skew: 0ms;
+    --qh-dur-shake: 0ms;
+    --qh-dur-cursor: 0ms;
+  }
+}

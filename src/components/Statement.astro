@@ -1,0 +1,245 @@
+---
+// Statement — Form No. QH/02, "The house". The company trunk: heritage,
+// what it is today, one certified plate, and the verification quote set
+// flush-left with the bronze rule (v3's centered quote retired — the
+// dossier argues left and never decorates).
+import Stamp from './Stamp.astro';
+import Arrow from './Arrow.astro';
+
+const heritage = [
+  {
+    v: '1967',
+    k: 'Beginning',
+    note: 'Cotton inspection and testing, Port Sudan',
+  },
+  {
+    v: '6',
+    k: 'Specialised companies',
+    note: 'Named in the group register (QH/07)',
+  },
+  {
+    v: '2',
+    k: 'Countries of operation',
+    note: 'Sudan · Egypt — offices and assets at each',
+  },
+];
+---
+<section class="section section--deck" id="story">
+  <div class="container">
+    <div class="form-head mono" data-reveal>
+      <span>Form No. QH/02 · The house</span>
+      <span class="form-head-right">Origin record</span>
+    </div>
+
+    <div class="statement-grid">
+      <div class="statement-copy">
+        <h2 class="display-2" data-reveal>We began with what could be checked.</h2>
+        <p data-reveal>
+          Our family business began in 1967 in Port Sudan with cotton
+          inspection and testing, and later developed across generations into
+          today’s Quality House group.
+        </p>
+        <p data-reveal>
+          Today we source, inspect and export Sudanese agricultural products,
+          and hold a diversified group of specialised companies in Sudan and
+          Egypt.
+        </p>
+        <a class="text-link" data-reveal href="https://qualityhouseintl.com/about">
+          Read the full story <Arrow />
+        </a>
+      </div>
+
+      <figure class="statement-media" data-reveal-media>
+        <div class="duotone">
+          <img
+            src="/assets/images/hero-acacia-c2y5xehd.webp"
+            alt="Acacia tree at dusk in Sudan, the origin of gum arabic"
+            width="1920"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="label">Fig. 02 — Acacia at dusk · Sudan</figcaption>
+      </figure>
+    </div>
+
+    <!-- The record: numbers only where the house can stand behind them.
+         Each figure carries its own denominator in mono. -->
+    <div class="heritage" data-reveal>
+      <div class="heritage-grid">
+        {heritage.map((h) => (
+          <div class="h-cell">
+            <span class="h-value"><span data-count={h.v}>{h.v}</span></span>
+            <span class="label h-k">{h.k}</span>
+            <span class="h-note mono">{h.note}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <blockquote class="verify-quote" data-reveal>
+      <span class="quote-rule" aria-hidden="true"></span>
+      <div>
+        <p>
+          “We describe only what we can verify. Specifications for a given
+          shipment are confirmed with the buyer before contract.”
+        </p>
+        <cite class="label">Quality House — house instruction</cite>
+      </div>
+      <div class="quote-stamp" data-stamp>
+        <Stamp size="4.75rem" />
+      </div>
+    </blockquote>
+  </div>
+</section>
+
+<style>
+  .mono {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--qh-s4);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-block-end: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s12);
+  }
+
+  .statement-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: calc(var(--qh-s16) + var(--qh-s4));
+    align-items: start;
+  }
+
+  .statement-copy {
+    display: grid;
+    gap: var(--qh-s6);
+    justify-items: start;
+    max-inline-size: var(--qh-measure);
+  }
+
+  .statement-copy .text-link {
+    margin-block-start: var(--qh-s2);
+  }
+
+  .statement-media {
+    margin-block-start: var(--qh-s8);
+    border: 1px solid var(--qh-line);
+    background: var(--qh-surface);
+  }
+
+  .statement-media figcaption {
+    padding: var(--qh-s3) var(--qh-s4);
+    border-block-start: 1px solid var(--qh-line);
+  }
+
+  /* --- Heritage register ------------------------------------------------------ */
+  .heritage {
+    margin-block-start: var(--qh-s24);
+    border-block: 1px solid var(--qh-line-strong);
+  }
+
+  .heritage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .h-cell {
+    display: grid;
+    gap: var(--qh-s1);
+    align-content: start;
+    padding: var(--qh-s8) var(--qh-s8) var(--qh-s8) 0;
+  }
+
+  .h-cell + .h-cell {
+    border-inline-start: 1px solid var(--qh-line);
+    padding-inline-start: var(--qh-s8);
+  }
+
+  .h-value {
+    font-family: var(--qh-font-serif, var(--qh-font-display));
+    font-size: var(--qh-display-2);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .h-k {
+    color: var(--qh-ink-2);
+  }
+
+  .h-note {
+    color: var(--qh-ink-mute);
+  }
+
+  /* --- Verification quote — flush-left, bronze rule, stamped ------------------ */
+  .verify-quote {
+    margin-block-start: var(--qh-s20);
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--qh-s8);
+    align-items: start;
+    max-inline-size: var(--qh-form-max);
+  }
+
+  .quote-rule {
+    display: block;
+    inline-size: 3px;
+    align-self: stretch;
+    background: var(--qh-bronze);
+  }
+
+  .verify-quote p {
+    font-family: var(--qh-font-serif, var(--qh-font-display));
+    font-size: var(--qh-display-3);
+    line-height: 1.3;
+    max-inline-size: var(--qh-measure-tight);
+  }
+
+  .verify-quote cite {
+    display: block;
+    margin-block-start: var(--qh-s4);
+  }
+
+  .quote-stamp {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 980px) {
+    .statement-grid {
+      grid-template-columns: 1fr;
+      gap: var(--qh-s12);
+    }
+
+    .statement-media {
+      max-inline-size: 34rem;
+    }
+
+    .heritage-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .h-cell + .h-cell {
+      border-inline-start: 0;
+      border-block-start: 1px solid var(--qh-line);
+      padding-inline-start: 0;
+      padding-block-start: var(--qh-s6);
+    }
+
+    .verify-quote {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .quote-stamp {
+      display: none;
+    }
+  }
+</style>

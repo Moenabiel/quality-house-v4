@@ -1,0 +1,327 @@
+---
+// Roots — Form No. QH/05, the house register. The people under the brand:
+// founder, board, executive, team, named in one consistent register.
+// Portraits from qualityhouseintl.com/organization (owner-authorized).
+// The founder (late, 1967) has no published photo — named with role text
+// only, never invented. v3's circular-crop card grid is retired: the
+// register row is the dossier's way of naming people.
+import Arrow from './Arrow.astro';
+
+interface RootPerson {
+  id: string;
+  img: string;
+  alt: string;
+  name: string;
+  role: string;
+  group: 'founder' | 'board' | 'executive' | 'team';
+}
+
+const FOUNDER: RootPerson = {
+  id: 'founder',
+  img: '',
+  alt: '',
+  name: 'Abubaker Al Siddig Ibrahim',
+  role: 'Late founder · cotton surveyor, Port Sudan, 1967',
+  group: 'founder',
+};
+
+const BOARD: RootPerson[] = [
+  {
+    id: 'ibrahim-board',
+    img: '/assets/images/people/ibrahim-ceo.jpg',
+    alt: 'Ibrahim Abubaker Alsiddig — Board Member, Quality House',
+    name: 'Ibrahim Abubaker Alsiddig',
+    role: 'Board Member · Chief Executive Officer',
+    group: 'board',
+  },
+  {
+    id: 'abdulnasser-board',
+    img: '/assets/images/people/abdulnasser-gm.jpg',
+    alt: 'Abdulnasser Abubaker Alsiddig — Board Member, Quality House',
+    name: 'Abdulnasser Abubaker Alsiddig',
+    role: 'Board Member · General Manager',
+    group: 'board',
+  },
+  {
+    id: 'sherine-board',
+    img: '/assets/images/people/sherine-board.jpg',
+    alt: 'Sherine Abubaker Alsiddig — Board Member, Quality House',
+    name: 'Sherine Abubaker Alsiddig',
+    role: 'Board Member',
+    group: 'board',
+  },
+  {
+    id: 'manal-board',
+    img: '/assets/images/people/manal-quality.jpg',
+    alt: 'Manal Abubaker Alsiddig — Board Member, Quality House',
+    name: 'Manal Abubaker Alsiddig',
+    role: 'Board Member · Quality & Business Excellence Manager',
+    group: 'board',
+  },
+];
+
+const EXECUTIVE: RootPerson[] = [
+  {
+    id: 'mujtaba-exec',
+    img: '/assets/images/people/mujtaba-hr.jpg',
+    alt: 'Mujtaba Khalid Hassan — HR Manager, Quality House',
+    name: 'Mujtaba Khalid Hassan',
+    role: 'HR Manager · Supplier Relationship',
+    group: 'executive',
+  },
+  {
+    id: 'ezzat-exec',
+    img: '/assets/images/people/ezzat-finance.jpg',
+    alt: 'Ezzat Yousef Mohammed Ahmed — Finance Manager, Quality House',
+    name: 'Ezzat Yousef Mohammed Ahmed',
+    role: 'Finance Manager',
+    group: 'executive',
+  },
+  {
+    id: 'ammar-exec',
+    img: '/assets/images/people/ammar-scqa.jpg',
+    alt: 'Ammar Ahmed Mohammed — GM Sudanese Center for Quality Assurance, Quality House',
+    name: 'Ammar Ahmed Mohammed',
+    role: 'GM, Sudanese Center for Quality Assurance',
+    group: 'executive',
+  },
+  {
+    id: 'tarig-exec',
+    img: '/assets/images/people/tariq-accountant.jpg',
+    alt: 'Tarig Sabry Ibrahim — Accountant, Quality House',
+    name: 'Tarig Sabry Ibrahim',
+    role: 'Accountant',
+    group: 'executive',
+  },
+];
+
+const TEAM: RootPerson[] = [
+  {
+    id: 'siddig-team',
+    img: '/assets/images/people/siddig-marketing.jpg',
+    alt: 'Siddig Abdulnasser Abubaker — Marketing Manager, Quality House',
+    name: 'Siddig Abdulnasser Abubaker',
+    role: 'Marketing Manager',
+    group: 'team',
+  },
+  {
+    id: 'macarious-team',
+    img: '/assets/images/people/macarious-bd.jpg',
+    alt: 'Macarious Hani Tharwat — Business Development Manager, Quality House',
+    name: 'Macarious Hani Tharwat',
+    role: 'Business Development Manager',
+    group: 'team',
+  },
+  {
+    id: 'jawad-team',
+    img: '/assets/images/people/jawad-export.jpg',
+    alt: 'Jawad Salaheldin Mohammed — Export Manager, Quality House',
+    name: 'Jawad Salaheldin Mohammed',
+    role: 'Export Manager',
+    group: 'team',
+  },
+  {
+    id: 'mohammed-team',
+    img: '/assets/images/people/mohammed-warehouse.jpg',
+    alt: 'Mohammed Ali Abdullatef — Main Warehouse Manager, Quality House',
+    name: 'Mohammed Ali Abdullatef',
+    role: 'Main Warehouse Manager',
+    group: 'team',
+  },
+];
+
+const GROUPS: Array<{
+  no: string;
+  title: string;
+  note: string;
+  people: RootPerson[];
+}> = [
+  { no: '05·A', title: 'The founder', note: 'The record begins here.', people: [FOUNDER] },
+  { no: '05·B', title: 'Board of Directors', note: 'Family stewardship across three generations.', people: BOARD },
+  { no: '05·C', title: 'Executive leadership', note: 'Sourcing, quality and export execution.', people: EXECUTIVE },
+  { no: '05·D', title: 'Team', note: 'Marketing, business development, export, operations.', people: TEAM },
+];
+---
+<section class="section" id="roots">
+  <div class="container">
+    <div class="form-head mono" data-reveal>
+      <span>Form No. QH/05 · The house register</span>
+      <span class="form-head-right">People of record</span>
+    </div>
+
+    <header class="roots-head">
+      <h2 class="display-2" data-reveal>The tree only stands because of what’s beneath it.</h2>
+      <p class="lead" data-reveal>
+        Quality House is a family business. The register below names the
+        founder, the board and the people who have steered the group since
+        1967, from cotton inspection in Port Sudan to today’s agricultural
+        export operation across Sudan and Egypt.
+      </p>
+    </header>
+
+    {GROUPS.map((g) => (
+      <div class="roots-group" data-reveal>
+        <div class="rg-head">
+          <span class="rg-no mono">{g.no}</span>
+          <h3 class="display-3">{g.title}</h3>
+          <span class="rg-note mono">{g.note}</span>
+        </div>
+
+        <ul class="rg-list mono" role="list">
+          {g.people.map((p) => (
+            <li class="rg-row">
+              <span class="rg-persona">
+                {p.img ? (
+                  <img src={p.img} alt="" loading="lazy" decoding="async" width="120" height="120" />
+                ) : (
+                  <span class="rg-hold" aria-hidden="true">—</span>
+                )}
+              </span>
+              <span class="rg-name">{p.name}</span>
+              <span class="rg-role">{p.role}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+
+    <div class="roots-src" data-reveal>
+      <p class="mono">
+        Portraits reproduced from the group’s own site
+        <a class="text-link" href="https://qualityhouseintl.com/organization" target="_blank" rel="noopener">
+          qualityhouseintl.com/organization <Arrow />
+        </a>
+        with the owner’s authorization. No likeness is invented or AI-generated.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mono {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--qh-s4);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-block-end: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s12);
+  }
+
+  .roots-head {
+    display: grid;
+    gap: var(--qh-s6);
+    max-inline-size: var(--qh-measure);
+    margin-block-end: var(--qh-s16);
+  }
+
+  .roots-group {
+    margin-block-start: var(--qh-s12);
+  }
+
+  .rg-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: var(--qh-s5);
+    padding-block-end: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line-strong);
+    margin-block-end: var(--qh-s5);
+  }
+
+  .rg-no {
+    color: var(--qh-bronze-deep);
+  }
+
+  .rg-note {
+    color: var(--qh-ink-mute);
+    text-align: end;
+  }
+
+  /* --- The register rows ---------------------------------------------------------- */
+  .rg-list {
+    display: grid;
+  }
+
+  .rg-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--qh-s5);
+    align-items: center;
+    padding-block: var(--qh-s3);
+    border-block-end: 1px solid var(--qh-line);
+    transition: background-color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .rg-row:hover {
+    background: var(--qh-surface);
+    box-shadow: inset 3px 0 0 var(--qh-bronze);
+  }
+
+  .rg-persona {
+    inline-size: 3.25rem;
+    block-size: 3.25rem;
+    overflow: clip;
+    border: 1px solid var(--qh-line);
+    background: var(--qh-paper-2);
+    display: block;
+  }
+
+  .rg-persona img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    filter: var(--qh-grade-filter);
+    mix-blend-mode: multiply;
+  }
+
+  .rg-hold {
+    display: grid;
+    place-items: center;
+    inline-size: 100%;
+    block-size: 100%;
+    color: var(--qh-ink-mute);
+    font-size: var(--qh-text-lg);
+  }
+
+  .rg-name {
+    font-weight: 600;
+    color: var(--qh-ink);
+  }
+
+  .rg-role {
+    color: var(--qh-ink-mute);
+  }
+
+  .roots-src {
+    margin-block-start: var(--qh-s16);
+    border-block-start: 1px solid var(--qh-line);
+    padding-block-start: var(--qh-s5);
+  }
+
+  .roots-src .mono {
+    color: var(--qh-ink-mute);
+  }
+
+  @media (max-width: 720px) {
+    .rg-row {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .rg-role {
+      grid-column: 2;
+    }
+
+    .rg-note {
+      display: none;
+    }
+  }
+</style>

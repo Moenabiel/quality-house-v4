@@ -1,0 +1,293 @@
+---
+// Fixed masthead of the dossier. Transparent over the cover page → pinned
+// paper + hairline after 40px (motion.ts toggles .is-pinned). No-JS: the
+// inline section links stay visible; with JS on mobile a focus-trapped
+// overlay menu replaces them (Esc closes, aria-expanded on the toggle).
+const links = [
+  { href: '/#story', label: 'Story', no: '02' },
+  { href: '/#products', label: 'Products', no: '03' },
+  { href: '/#journey', label: 'Journey', no: '04' },
+  { href: '/#roots', label: 'Register', no: '05' },
+  { href: '/#quality', label: 'Quality', no: '06' },
+  { href: '/#group', label: 'Group', no: '07' },
+];
+---
+<header data-nav transition:persist="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <img src="/qh-mark-sm.webp" alt="" width="28" height="28" />
+      <span>Quality House</span>
+      <span class="brand-no mono" aria-hidden="true">QH/1967</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Page sections" transition:persist="nav-links">
+      {links.map((l) => <a href={l.href}><span class="ln-no mono" aria-hidden="true">{l.no}</span>{l.label}</a>)}
+    </nav>
+
+    <a class="nav-cta" href="/#contact">Start an enquiry</a>
+
+    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-menu">
+      <span class="toggle-word">Menu</span>
+      <span class="toggle-box" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+
+  <div class="nav-menu" id="nav-menu" data-nav-menu>
+    <nav aria-label="Page sections (menu)">
+      <ol class="menu-list">
+        {links.slice(0, 2).map((l) => (
+          <li>
+            <a class="menu-link" data-menu-link href={l.href}>
+              <span class="menu-no mono">{l.no}</span>
+              {l.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a class="menu-link menu-link--sub" data-menu-link href="/products/gum-arabic">
+            <span class="menu-no mono">03·A</span>
+            Gum arabic dossier
+          </a>
+        </li>
+        {links.slice(2).map((l) => (
+          <li>
+            <a class="menu-link" data-menu-link href={l.href}>
+              <span class="menu-no mono">{l.no}</span>
+              {l.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a class="menu-link" data-menu-link href="/#contact">
+            <span class="menu-no mono">08</span>
+            Contact
+          </a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</header>
+
+<style>
+  [data-nav] {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: var(--qh-z-nav);
+    border-block-end: 1px solid transparent;
+    transition:
+      background-color var(--qh-dur-fast) var(--qh-ease-press),
+      border-color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  [data-nav].is-pinned {
+    background: var(--qh-paper);
+    border-block-end-color: var(--qh-line);
+  }
+
+  .nav-inner {
+    max-inline-size: var(--qh-container);
+    margin-inline: auto;
+    padding-inline: var(--qh-gutter);
+    block-size: var(--qh-header-h);
+    display: flex;
+    align-items: center;
+    gap: var(--qh-s8);
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: var(--qh-s3);
+    text-decoration: none;
+  }
+
+  .brand span {
+    font-family: var(--qh-font-serif, var(--qh-font-display));
+    font-size: var(--qh-text-lg);
+    font-weight: 500;
+    letter-spacing: var(--qh-track-display);
+    color: var(--qh-ink);
+  }
+
+  .brand-no {
+    font-size: var(--qh-text-xs);
+    color: var(--qh-ink-mute);
+    letter-spacing: 0.06em;
+    align-self: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--qh-s6);
+    margin-inline-start: var(--qh-s8);
+  }
+
+  .nav-links a {
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-weight: 500;
+    letter-spacing: var(--qh-track-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--qh-ink-2);
+    padding-block: var(--qh-s2);
+    position: relative;
+    transition: color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .nav-links a .ln-no {
+    color: var(--qh-ink-mute);
+    margin-inline-end: var(--qh-s1);
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: 1px;
+    background: var(--qh-bronze-deep);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .nav-links a:hover,
+  .nav-links a.is-active {
+    color: var(--qh-ink);
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-cta {
+    margin-inline-start: auto;
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    font-weight: 500;
+    letter-spacing: var(--qh-track-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--qh-ink);
+    border: 1px solid var(--qh-line-strong);
+    border-radius: var(--qh-r-control);
+    padding: var(--qh-s2) var(--qh-s4);
+    transition:
+      border-color var(--qh-dur-fast) var(--qh-ease-press),
+      color var(--qh-dur-fast) var(--qh-ease-press);
+  }
+
+  .nav-cta:hover {
+    border-color: var(--qh-bronze-deep);
+    color: var(--qh-bronze-deep);
+  }
+
+  /* --- Overlay menu (mobile) ------------------------------------------------ */
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    gap: var(--qh-s2);
+    font-family: var(--qh-font-mono);
+    font-size: var(--qh-text-xs);
+    letter-spacing: var(--qh-track-label);
+    color: var(--qh-ink);
+  }
+
+  .toggle-box {
+    display: grid;
+    gap: 3px;
+    inline-size: 18px;
+  }
+
+  .toggle-box i {
+    block-size: 1px;
+    background: var(--qh-ink);
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  @media (max-width: 860px) {
+    .nav-links,
+    .nav-cta,
+    .brand-no {
+      display: none;
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+      margin-inline-start: auto;
+    }
+
+    .nav-menu {
+      display: block;
+      position: fixed;
+      inset: 0;
+      inset-block-start: var(--qh-header-h-mobile);
+      background: var(--qh-paper);
+      border-block-start: 1px solid var(--qh-line);
+      padding: var(--qh-s12) var(--qh-gutter);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity var(--qh-dur-panel) var(--qh-ease-panel),
+        visibility 0s linear var(--qh-dur-panel);
+    }
+
+    .nav-menu.is-open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity var(--qh-dur-panel) var(--qh-ease-panel);
+    }
+
+    .menu-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .menu-link {
+      display: flex;
+      align-items: baseline;
+      gap: var(--qh-s4);
+      padding: var(--qh-s5) 0;
+      border-block-end: 1px solid var(--qh-line);
+      font-family: var(--qh-font-display);
+      font-size: var(--qh-display-3);
+      color: var(--qh-ink);
+      text-decoration: none;
+    }
+
+    .menu-no {
+      font-size: var(--qh-text-sm);
+      color: var(--qh-ink-mute);
+    }
+
+    /* Sub-forms of the register nest directly beneath their parent (03·A
+       under 03) — the registry reads as one document, not a second index. */
+    .menu-link--sub {
+      font-size: calc(var(--qh-display-3) * 0.62);
+      color: var(--qh-ink-2);
+      padding-block: var(--qh-s4) 0;
+      border-block-end: none;
+    }
+
+    .menu-link--sub + .menu-link,
+    li:has(+ li > .menu-link:not(.menu-link--sub)) {
+      border-block-start: 1px solid var(--qh-line);
+    }
+  }
+
+  @media (max-width: 860px) {
+    [data-nav] {
+      block-size: auto;
+    }
+
+    .nav-inner {
+      block-size: var(--qh-header-h-mobile);
+    }
+  }
+</style>
